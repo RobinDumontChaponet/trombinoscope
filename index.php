@@ -14,6 +14,7 @@ function get_include_contents($filename) {
 }
 
 set_include_path(dirname(__FILE__).'/includes');
+include_once('dbConnection.inc.php');
 
 if(empty($_GET['requ']))
 	$_GET['requ']='groups';

@@ -13,7 +13,7 @@ elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
 	$_POST['pwd']=preg_quote(strip_tags($_POST['pwd']));
 	if ($_POST['user']=='' || $_POST['pwd']=='') $badinput=true;
 	else {
-		include('includes/connexion.inc.php');
+		include('includes/dbConnection.inc.php');
 		include('includes/passwordHash.inc.php');
 		try {
 			$connect = connect('mysql:host=infodb2.iut.univ-metz.fr;dbname=dumont28u_trombi');
