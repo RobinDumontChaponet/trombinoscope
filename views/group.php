@@ -1,4 +1,4 @@
-<!--meta title="Trombinoscope | Groupe n°"-->
+<!--meta title="Trombinoscope | Groupe n°" style="style/grid.css"-->
 <nav>
   <ul>
 	  <li><a href="deconnection.php" title="Se déconnecter">Déconnexion</a></li>
