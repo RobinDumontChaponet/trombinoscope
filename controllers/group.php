@@ -2,7 +2,7 @@
 
 include(dirname(__FILE__).'/../models/group.class.php');
 
-$students = getStudentsById($_GET['id']);
+$group = getGroupById($_GET['id']);
 
 include(dirname(__FILE__).'/../views/group.php');
 
