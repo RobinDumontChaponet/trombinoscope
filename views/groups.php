@@ -1,10 +1,10 @@
 <!--meta title="Trombinoscope | Groupes"-->
+<nav>
+  	<ul>
+	 	<li><a href="index.php" title="Groupes">Groupes</a><a href="deconnection.php" title="Se déconnecter">Déconnexion</a></li>
+  	</ul>
+</nav>
 <div id="wrapper">
-	<nav>
-  		<ul>
-	 		<li><a href="deconnection.php" title="Se déconnecter">Déconnexion</a></li>
-  		</ul>
-	</nav>
 	<section id="content">
 		<ol>
 			<li><a href="?requ=addgroup" title="Ajouter un groupe">Ajouter un groupe</a></li>
