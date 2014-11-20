@@ -1,6 +1,8 @@
 figure {
 	width: 200px;
 	min-height: 230px;
+	display: inline-block;
+	margin: 1%;
 }
 figure img {
 	width: 100%;
