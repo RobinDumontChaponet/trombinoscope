@@ -68,6 +68,8 @@ if($matches[1]) {
 	<?php echo $script; ?>
   </head>
   <body>
-  	<?php echo $inc; ?>
+  	<?php include_once('menu.inc.php');
+	  	  echo $inc;
+	?>
   </body>
 </html>
