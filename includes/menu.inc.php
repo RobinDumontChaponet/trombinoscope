@@ -5,6 +5,7 @@ $items = array(
 ); ?>
 <header>
   <nav>
+  	<h1>Trombinoscope</h1>
   	<ul>
 <?php
 foreach($items as $key => $item)
