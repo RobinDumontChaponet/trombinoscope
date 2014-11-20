@@ -1,7 +1,7 @@
 <?php
 
 class Student {
-	private $id
+	private $id;
 	private $name, $firstName;
 	private $group;
 
@@ -32,4 +32,19 @@ function getStudents () {
 	return $students;
 }
 
+function getStudentsById ($id) {
+	$students = array();
+	try {
+		$connect = connect();
+		$statement = $connect->prepare("SELECT * FROM student WHERE id='$id'");
+
+		$statement->execute();
+
+		while ($rs = $statement->fetch(PDO::FETCH_OBJ))
+			$students[]= $rs;
+	} catch (PDOException $e) {
+		die("Error!: " . $e->getMessage() . "<br/>");
+	}
+	return $students;
+}
 ?>
