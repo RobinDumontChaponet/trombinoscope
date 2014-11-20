@@ -1,2 +1,4 @@
 ###ToDo
-- Ajouter un bouton retour dans les modif groupe
+- Faire la fonction et la page : Ajout d'un groupe
+- Faire la fonction et la page : Ajout d'un élève
+- 
