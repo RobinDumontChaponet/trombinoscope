@@ -51,9 +51,13 @@ body {
 	padding-bottom: 3.125em;
 	margin-bottom: -3em;
 }
-nav {
+header {
+	padding-left: 400px;
 	border-bottom: 1px solid lightgrey;
 	margin-bottom: 3em;
+}
+nav {
+
 }
 nav ul {
 	position: relative;
