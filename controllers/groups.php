@@ -1,8 +1,8 @@
 <?php
 
-//include(dirname(__FILE__).'/../models/groups.php');
+include(dirname(__FILE__).'/../models/group.class.php');
 
-//$groups = getGroups();
+$groups = getGroups();
 
 include(dirname(__FILE__).'/../views/groups.php');
 

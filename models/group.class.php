@@ -1,7 +1,7 @@
 <?php
 
 class Group {
-	private $id
+	private $id;
 	private $name;
 	private $date;
 
@@ -22,7 +22,7 @@ class Group {
 	}*/
 }
 
-function getSites () {
+function getGroups () {
 	$groups = array();
 	try {
 		$connect = connect('mysql:host=infodb2.iut.univ-metz.fr;dbname=dumont28u_trombi');
@@ -30,8 +30,9 @@ function getSites () {
 
 		$statement->execute();
 
-		while ($rs = $statement->fetch(PDO::FETCH_OBJ))
+		while ($rs = $statement->fetch(PDO::FETCH_OBJ)) {
 			$groups[]= $rs;
+		}
 	} catch (PDOException $e) {
 		die("Error!: " . $e->getMessage() . "<br/>");
 	}
