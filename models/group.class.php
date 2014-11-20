@@ -30,9 +30,8 @@ function getGroups () {
 
 		$statement->execute();
 
-		while ($rs = $statement->fetch(PDO::FETCH_OBJ)) {
+		while ($rs = $statement->fetch(PDO::FETCH_OBJ))
 			$groups[]= $rs;
-		}
 	} catch (PDOException $e) {
 		die("Error!: " . $e->getMessage() . "<br/>");
 	}
