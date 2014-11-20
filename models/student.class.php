@@ -1,10 +1,8 @@
 <?php
-
 class Student {
 	private $id;
 	private $name, $firstName;
 	private $group;
-
 	public function __construct ($id, $name, $firstName, $group) {
 		$this->id=$id;
 		$this->name=$name;
@@ -15,15 +13,12 @@ class Student {
 		return 'Student [ id : '.$this->id.'; name : '.$this->name.'; firstName : '.$this->firstName.'; group : '.$this->group.']';
 	}
 }
-
 function getStudents () {
 	$students = array();
 	try {
 		$connect = connect();
-		$statement = $connect->prepare("SELECT * FROM student");
-
+		$statement = $connect->prepare('SELECT * FROM student');
 		$statement->execute();
-
 		while ($rs = $statement->fetch(PDO::FETCH_OBJ))
 			$students[]= $rs;
 	} catch (PDOException $e) {
@@ -31,15 +26,13 @@ function getStudents () {
 	}
 	return $students;
 }
-
 function getStudentsById ($id) {
 	$students = array();
 	try {
 		$connect = connect();
-		$statement = $connect->prepare("SELECT * FROM student WHERE id='$id'");
-
+		$statement = $connect->prepare('SELECT * FROM student WHERE idGroup=?');
+		$statement->bindParam(1, $id);
 		$statement->execute();
-
 		while ($rs = $statement->fetch(PDO::FETCH_OBJ))
 			$students[]= $rs;
 	} catch (PDOException $e) {
