@@ -18,7 +18,7 @@ class Group {
 function getGroups () {
 	$groups = array();
 	try {
-		$connect = connect('mysql:host=infodb2.iut.univ-metz.fr;dbname=dumont28u_trombi');
+		$connect = connect();
 		$statement = $connect->prepare("SELECT * FROM `group`");
 
 		$statement->execute();
