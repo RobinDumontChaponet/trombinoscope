@@ -1,7 +1,7 @@
 <?php
 
 class Auth {
-	private $id
+	private $id;
 	private $name;
 
 	public function __construct ($id, $name) {
@@ -44,16 +44,16 @@ function getAuths () {
 	return $auths;
 }
 
-function getAuthById () {
+function getAuthById ($id) {
 	$auth = null;
 	try {
 		$connect = connect();
-		$statement = $connect->prepare('SELECT * FROM auth where idAuth');
-
+		$statement = $connect->prepare('SELECT * FROM auth where idAuth=?');
+		$statement->bindParam(1, $id);
 		$statement->execute();
 
-		$rs = $statement->fetch(PDO::FETCH_OBJ);
-		$auth= new Auth($rs->idAuth, $rs->name);
+		if($rs = $statement->fetch(PDO::FETCH_OBJ))
+			$auth= new Auth($rs->idAuth, $rs->name);
 	} catch (PDOException $e) {
 		die('Error!: ' . $e->getMessage() . '<br/>');
 	}

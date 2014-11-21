@@ -6,31 +6,25 @@ foreach($badAgents as $agent) {
 }
 session_start();
 header("HTTP/1.1 200 OK");
-if (isset($_SESSION['trombiUser']) && $_SESSION['trombiUser']!='')
+if (isset($_SESSION['trombiUser']) && !empty($_SESSION['trombiUser']))
 	header ('Location: index.php');
 elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
 	$_POST['user']=preg_quote(strip_tags($_POST['user']));
 	$_POST['pwd']=preg_quote(strip_tags($_POST['pwd']));
 	if ($_POST['user']=='' || $_POST['pwd']=='') $badinput=true;
 	else {
-		include('includes/dbConnection.inc.php');
-		include('includes/passwordHash.inc.php');
-		try {
-			$connect = connect('mysql:host=infodb2.iut.univ-metz.fr;dbname=dumont28u_trombi');
-			$statement = $connect->prepare("SELECT pwd FROM user");
+		include_once('includes/dbConnection.inc.php');
+		include_once('models/user.class.php');
+		include_once('includes/passwordHash.inc.php');
 
-			$statement->execute();
+		$user=getUserByLogin($_POST['user']);
 
-			$res = $statement->fetch(PDO::FETCH_OBJ)->pwd;
-		} catch (PDOException $e) {
-			die("Error!: " . $e->getMessage() . "<br/>");
-		}
-		if (!validate_password($_POST['pwd'] , $res)) {
+		if (empty($user) || !validate_password($_POST['pwd'] , $user->getPwd())) {
 			$badinput=true;
 			sleep(1);
 		} else {
 			session_start();
-			$_SESSION['trombiUser']=$_POST['user'];
+			$_SESSION['trombiUser']=$user;
 			session_start();
 			header ('Location: index.php');
 			exit;

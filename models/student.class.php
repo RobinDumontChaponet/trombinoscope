@@ -79,9 +79,9 @@ function getStudentById ($id) {
 		$statement = $connect->prepare('SELECT * FROM student WHERE idStudent=?');
 		$statement->bindParam(1, $id);
 		$statement->execute();
-		$rs = $statement->fetch(PDO::FETCH_OBJ);
 
-		$student= new Student($rs->idStudent, $rs->name, $rs->firstName);
+		if($rs = $statement->fetch(PDO::FETCH_OBJ))
+			$student= new Student($rs->idStudent, $rs->name, $rs->firstName);
 	} catch (PDOException $e) {
 		die("Error!: " . $e->getMessage() . "<br/>");
 	}

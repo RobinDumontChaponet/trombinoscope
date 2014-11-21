@@ -3,13 +3,15 @@
 include_once (dirname(__FILE__).'/../models/auth.class.php');
 
 class User {
-	private $id
+	private $id;
 	private $login;
+	private $pwd;
 	private $auth;
 
-	public function __construct ($id, $login, $auth) {
+	public function __construct ($id, $login, $pwd, $auth) {
 		$this->id=$id;
 		$this->login=$login;
+		$this->pwd=$pwd;
 		$this->auth=$auth;
 	}
 
@@ -22,6 +24,9 @@ class User {
 	public function getLogin () {
 		return $this->login;
 	}
+	public function getPwd () {
+		return $this->pwd;
+	}
 
 	public function setId ($id) {
 		$this->id=$id;
@@ -31,6 +36,9 @@ class User {
 	}
 	public function setLogin ($login) {
 		$this->login=$login;
+	}
+	public function setPwd ($pwd) {
+		$this->pwd=$pwd;
 	}
 
 	public function __toString () {
@@ -52,6 +60,38 @@ function getUsers () {
 		die('Error!: ' . $e->getMessage() . '<br/>');
 	}
 	return $users;
+}
+
+function getUserById ($id) {
+	$user = null;
+	try {
+		$connect = connect();
+		$statement = $connect->prepare('SELECT * FROM user where idUser=?');
+		$statement->bindParam(1, $id);
+		$statement->execute();
+
+		if($rs = $statement->fetch(PDO::FETCH_OBJ))
+			$user=new User($rs->idUser, $rs->login, $rs->pwd, getAuthById($rs->auth));
+	} catch (PDOException $e) {
+		die('Error!: ' . $e->getMessage() . '<br/>');
+	}
+	return $user;
+}
+
+function getUserByLogin ($login) {
+	$user = null;
+	try {
+		$connect = connect();
+		$statement = $connect->prepare('SELECT * FROM user where login=?');
+		$statement->bindParam(1, $login);
+		$statement->execute();
+
+		if($rs = $statement->fetch(PDO::FETCH_OBJ))
+			$user=new User($rs->idUser, $rs->login, $rs->pwd, getAuthById($rs->auth));
+	} catch (PDOException $e) {
+		die('Error!: ' . $e->getMessage() . '<br/>');
+	}
+	return $user;
 }
 
 ?>

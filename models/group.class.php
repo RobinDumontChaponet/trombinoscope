@@ -72,11 +72,10 @@ function getGroupById ($id) {
 		$statement->bindParam(1, $id);
 		$statement->execute();
 
-		$rs=$statement->fetch(PDO::FETCH_OBJ);
-
-		$group = new Group($rs->idGroup, $rs->name, $rs->date);
-		$group->setStudents(getStudentsByGroup($group));
-
+		if($rs = $statement->fetch(PDO::FETCH_OBJ)) {
+			$group = new Group($rs->idGroup, $rs->name, $rs->date);
+			$group->setStudents(getStudentsByGroup($group));
+		}
 	} catch (PDOException $e) {
 		die('Error!: ' . $e->getMessage() . '<br/>');
 	}
