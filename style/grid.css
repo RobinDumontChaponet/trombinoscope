@@ -45,3 +45,225 @@ figcaption {
 	font-size: 14px;
 	line-height: 14px;
 }
+*, *:before, *:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+}
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-moz-font-feature-settings: "liga", "kern";
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+}
+
+form {
+	text-align:center;
+	position:relative;
+	padding:5px;
+	margin:8px;
+	border:1px solid #B3B3B3;
+	background:#FCFCFC;
+	opacity:0;
+/* css3 */
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	-webkit-transition:opacity 1s ease-in;
+	-moz-transition:opacity 1s ease-in;
+	-o-transition:opacity 1s ease-in;
+	-ms-transition:opacity 1s ease-in;
+	transition:opacity 1s ease-in;
+}
+
+form:before {
+	content:"";
+	position:absolute;
+	top:-10px;
+/* value = - border-top-width - border-bottom-width */
+	left:50%;
+/* controls horizontal position */
+	margin-left:-10px;
+	border-width:0 10px 10px;
+	border-style:solid;
+	border-color:#B3B3B3 transparent;
+/* reduce the damage in FF3.0 */
+	display:block;
+	width:0;
+}
+
+form:after {
+	content:"";
+	position:absolute;
+	top:-8px;
+/* value = - border-top-width - border-bottom-width */
+	left:50%;
+/* value = (:before left) + (:before border-left) - (:after border-left) */
+	margin-left:-8px;
+	border-width:0 8px 8px;
+	border-style:solid;
+	border-color:#fff transparent;
+/* reduce the damage in FF3.0 */
+	display:block;
+	width:0;
+}
+
+input[type="submit"],.button {
+	width:200px;
+	z-index:100;
+	position:relative;
+	overflow:hidden;
+	height:19px;
+	padding:0;
+	-webkit-box-sizing:content-box;
+	-moz-box-sizing:content-box;
+	box-sizing:content-box;
+	display:inline-block;
+	text-align:center;
+	text-decoration:none;
+	color:rgba(0,0,0,1);
+	font:normal 13px/19px "Lucida Grande";
+	border:1px solid rgba(154,154,154,1);
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	background-image:rgba(235,235,235,1);
+	background-image:-webkit-linear-gradient(top,#fffefe 0%,#efefef 50%,#e7e7e7 50%,#eee 100%);
+	background-image:-moz-linear-gradient(top,#fffefe 0%,#efefef 50%,#e7e7e7 50%,#eee 100%);
+	background-image:-o-linear-gradient(top,#fffefe 0%,#efefef 50%,#e7e7e7 50%,#eee 100%);
+	background-image:-ms-linear-gradient(top,#fffefe 0%,#efefef 50%,#e7e7e7 50%,#eee 100%);
+	background-image:linear-gradient(top,#fffefe 0%,#efefef 50%,#e7e7e7 50%,#eee 100%);
+	-webkit-box-shadow:rgba(0,0,0,0.1) 0 1px 0 0px,inset rgba(255,255,255,0.4) 0 1px 2px 0;
+	-moz-box-shadow:rgba(0,0,0,0.1) 0 1px 0 0px,inset rgba(255,255,255,0.4) 0 1px 2px 0;
+	box-shadow:rgba(0,0,0,0.1) 0 1px 0 0px,inset rgba(255,255,255,0.4) 0 1px 2px 0;
+	-webkit-transition:.2s all ease-in-out;
+	-moz-transition:.2s all ease-in-out;
+	-ms-transition:.2s all ease-in-out;
+	-o-transition:.2s all ease-in-out;
+	transition:.2s all ease-in-out;
+}
+
+input[type="submit"],.button.loading img {
+	display:none;
+}
+
+input[type="submit"],.button.loading {
+	width:40px;
+	height:40px;
+	margin:0 auto;
+}
+
+input[type="submit"],.button.loading label {
+	display:none;
+}
+
+input[type="submit"],.button.loading img {
+	display:block;
+}
+
+input[type="submit"] {
+	width:auto;
+	height:20px;
+	padding:0 10px;
+	margin:8px auto 2px;
+}
+
+input[type="file"] {
+	position:absolute;
+	left:-1000px;
+	visibility:hidden;
+}
+
+
+fieldset {
+	border:0;
+}
+
+
+input[type="submit"], .button {
+	width:200px;
+	z-index:100;
+	position:relative;
+	overflow:hidden;
+	height:19px;
+	padding:0;
+	-webkit-box-sizing:content-box;
+	-moz-box-sizing:content-box;
+	box-sizing:content-box;
+	display:inline-block;
+	text-align:center;
+	text-decoration:none;
+	color:rgba(0,0,0,1);
+	font:normal 13px/19px "Lucida Grande";
+	border:1px solid rgba(154,154,154,1);
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	background-image:rgba(235,235,235,1);
+	background-image:-webkit-linear-gradient(top,#fffefe 0%,#efefef 50%,#e7e7e7 50%,#eee 100%);
+	background-image:-moz-linear-gradient(top,#fffefe 0%,#efefef 50%,#e7e7e7 50%,#eee 100%);
+	background-image:-o-linear-gradient(top,#fffefe 0%,#efefef 50%,#e7e7e7 50%,#eee 100%);
+	background-image:-ms-linear-gradient(top,#fffefe 0%,#efefef 50%,#e7e7e7 50%,#eee 100%);
+	background-image:linear-gradient(top,#fffefe 0%,#efefef 50%,#e7e7e7 50%,#eee 100%);
+	-webkit-box-shadow:rgba(0,0,0,0.1) 0 1px 0 0px,inset rgba(255,255,255,0.4) 0 1px 2px 0;
+	-moz-box-shadow:rgba(0,0,0,0.1) 0 1px 0 0px,inset rgba(255,255,255,0.4) 0 1px 2px 0;
+	box-shadow:rgba(0,0,0,0.1) 0 1px 0 0px,inset rgba(255,255,255,0.4) 0 1px 2px 0;
+	-webkit-transition:.2s all ease-in-out;
+	-moz-transition:.2s all ease-in-out;
+	-ms-transition:.2s all ease-in-out;
+	-o-transition:.2s all ease-in-out;
+	transition:.2s all ease-in-out;
+}
+
+input[type="submit"], .button.loading img {
+	display:none;
+}
+
+input[type="submit"], .button.loading {
+	width:40px;
+	height:40px;
+	margin:0 auto;
+}
+
+input[type="submit"], .button.loading label {
+	display:none;
+}
+
+input[type="submit"], .button.loading img {
+	display:block;
+}
+input[type="submit"] {
+	width: auto;
+	height: 20px;
+	padding: 0 10px;
+	margin: 8px auto 2px;
+}
+
+input[type="file"] {
+	position:absolute;
+	left:-1000px;
+	visibility:hidden;
+}
+
+#fileinput {
+	visibility:visible;
+	top:0;
+	bottom:0;
+	left:0;
+	width:100%;
+	opacity:0;
+	filter:alpha(opacity=0);
+	cursor:pointer;
+	position:absolute;
+}
