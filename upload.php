@@ -3,9 +3,9 @@ session_start();
 if (!isset($_SESSION['trombiUser']) || $_SESSION['trombiUser']=='') {
 	exit();
 }
-include 'transit.inc.php';
+include(dirname(__FILE__).'/includes/transit.inc.php');
 
-$possibleDestinations = array('data/csv', 'data/groups');
+$possibleDestinations = array('data/csv', 'data/images');
 $canSub = array('data/groups');
 
 $extImg = array('jpg', 'jpeg', 'png', 'gif', 'bmp');
