@@ -1,6 +1,3 @@
 <!--meta title="Trombinoscope | Supprimer ..."-->
-<div id="wrapper">
-  <section id="content">
-
-  </section>
-</div>
+<section id="content">
+</section>

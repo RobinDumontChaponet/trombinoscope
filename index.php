@@ -77,8 +77,9 @@ if($matches[1]) {
 	<?php echo $script; ?>
   </head>
   <body>
-  	<?php include_once('menu.inc.php');
-	  	  echo $inc;
-	?>
+    <div id="wrapper">
+	  <?php include_once('menu.inc.php');
+	  echo $inc; ?>
+    </div>
   </body>
 </html>

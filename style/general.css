@@ -53,11 +53,9 @@ body {
 	height:auto;
 	min-height:100%;
 	text-align:justify;
-	line-height:1.7857;
 	max-width:76em;
-	margin:0 8%;
+	margin: 0 auto -3em;
 	padding-bottom:3.125em;
-	margin-bottom:-3em;
 }
 
 header {
@@ -170,6 +168,9 @@ nav a[href="deconnection.php"] span, nav a[href="deconnection"] span {
 
 #wrapper > #content {
 	padding:0;
+	margin:0 8%;
+	line-height:1.7857;
+	box-shadow: 0 0 4px lightgrey;
 }
 
 #wrapper > #content:before,#wrapper > #content:after {
@@ -184,7 +185,7 @@ nav a[href="deconnection.php"] span, nav a[href="deconnection"] span {
 ol li {
 	font-size:16px;
 	line-height:60px;
-	color:#171717;
+	color:#777;
 	background:#fff;
 	margin:0;
 	border:1px solid #d3d3d3;
@@ -196,22 +197,30 @@ ol li:last-child {
 	border-bottom-width:1px;
 }
 
-ol span {
+ol aside {
 	float:right;
 }
 
-ol span a {
+ol aside a:before {
 	font-family:'icomoon';
 	speak:none;
 	font-style:normal;
-	font-weight:400;
 	font-variant:normal;
 	text-transform:none;
 	line-height:1;
 	cursor:pointer;
-	color:#474747;
-	text-decoration:none;
+	content: "\e032";
+}
+ol a {
+	color: #777;
+	text-decoration: none;
 	padding:0 0 0 5px;
+}
+ol aside a span {
+	display: none;
+}
+ol aside a[title="supprimer"]:before {
+	content: "\e117";
 }
 
 footer {
