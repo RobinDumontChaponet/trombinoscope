@@ -1,9 +1,13 @@
 <?php
 
-//include(dirname(__FILE__).'/../models/group.class.php');
+include(MODELS_INC.'Student.class.php');
 
 //$groups = getGroups();
 
-include(dirname(__FILE__).'/../views/student.php');
+if($_SESSION['trombiUser']->getAuth()==1) {
+	$student = getStudentById ($_SESSION['trombiUser']->getId());
+}
+
+include(VIEWS_INC.'student.php');
 
 ?>

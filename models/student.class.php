@@ -1,7 +1,5 @@
 <?php
 
-include_once (dirname(__FILE__).'/../models/group.class.php');
-
 class Student {
 	private $id;
 	private $name, $firstName;
@@ -21,9 +19,6 @@ class Student {
 	public function getFirstName () {
 		return $this->firstName;
 	}
-	public function getgroup () {
-		return $this->group;
-	}
 
 	public function setId ($id) {
 		$this->id=$id;
@@ -33,9 +28,6 @@ class Student {
 	}
 	public function setFirstName ($firstName) {
 		$this->firstName=$firstName;
-	}
-	public function setgroup ($group) {
-		$this->group=$group;
 	}
 
 	public function __toString () {

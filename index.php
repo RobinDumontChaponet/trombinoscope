@@ -1,4 +1,14 @@
-<?php session_start();
+<?php
+define('MODELS_INC', dirname(__FILE__).'/models/');
+define('VIEWS_INC', dirname(__FILE__).'/views/');
+
+function __autoload($className) {
+    include MODELS_INC.$className.'.class.php';
+}
+
+include_once(dirname(__FILE__).'/includes/dbConnection.inc.php');
+
+session_start();
 if (!isset($_SESSION['trombiUser']) || $_SESSION['trombiUser']=='') {
 	header ('Location: connection.php');
 	exit();
@@ -14,7 +24,6 @@ function get_include_contents($filename) {
 }
 
 set_include_path(dirname(__FILE__).'/includes');
-include_once('dbConnection.inc.php');
 
 if(empty($_GET['requ']))
 	$_GET['requ']='groups';

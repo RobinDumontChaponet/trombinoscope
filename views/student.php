@@ -2,11 +2,11 @@
 <div id="wrapper">
   <section id="content">
 	<div>
-		Nom : <?php echo $_SESSION['trombiStudent']->getNom ?>
+		Nom : <?php echo $student->getFirstName().' '.$student->getName(); ?>
 	</div>
 	<div id="file">
 		<fieldset id="add" class="button">
-			<label>Sélectionnez une image à envoyer</label> <input type="file" id="fileinput" name="file"> <img src="style/images/loader.gif" alt="chargement...">
+			<label>Importez une image</label> <input type="file" id="fileinput" name="file">
 		</fieldset>
 	</div>
   </section>

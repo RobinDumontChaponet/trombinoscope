@@ -1,6 +1,6 @@
 <?php
 
-include_once (dirname(__FILE__).'/../models/auth.class.php');
+require_once('Auth.class.php');
 
 class User {
 	private $id;
@@ -55,7 +55,7 @@ function getUsers () {
 		$statement->execute();
 
 		while ($rs = $statement->fetch(PDO::FETCH_OBJ))
-			$users[]=new User($rs->idUser, $rs->login, getAuthById($rs->auth));
+			$users[]=new User($rs->idUser, $rs->login, getAuthById($rs->idAuth));
 	} catch (PDOException $e) {
 		die('Error!: ' . $e->getMessage() . '<br/>');
 	}
@@ -71,7 +71,7 @@ function getUserById ($id) {
 		$statement->execute();
 
 		if($rs = $statement->fetch(PDO::FETCH_OBJ))
-			$user=new User($rs->idUser, $rs->login, $rs->pwd, getAuthById($rs->auth));
+			$user=new User($rs->idUser, $rs->login, $rs->pwd, getAuthById($rs->idAuth));
 	} catch (PDOException $e) {
 		die('Error!: ' . $e->getMessage() . '<br/>');
 	}
@@ -87,7 +87,7 @@ function getUserByLogin ($login) {
 		$statement->execute();
 
 		if($rs = $statement->fetch(PDO::FETCH_OBJ))
-			$user=new User($rs->idUser, $rs->login, $rs->pwd, getAuthById($rs->auth));
+			$user=new User($rs->idUser, $rs->login, $rs->pwd, getAuthById($rs->idAuth));
 	} catch (PDOException $e) {
 		die('Error!: ' . $e->getMessage() . '<br/>');
 	}

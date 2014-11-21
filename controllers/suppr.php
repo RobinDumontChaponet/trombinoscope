@@ -4,6 +4,6 @@
 
 //$groups = getGroups();
 
-include(dirname(__FILE__).'/../views/suppr.php');
+include(VIEWS_INC.'suppr.php');
 
 ?>

@@ -14,7 +14,7 @@ elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
 	if ($_POST['user']=='' || $_POST['pwd']=='') $badinput=true;
 	else {
 		include_once('includes/dbConnection.inc.php');
-		include_once('models/user.class.php');
+		include_once('models/User.class.php');
 		include_once('includes/passwordHash.inc.php');
 
 		$user=getUserByLogin($_POST['user']);

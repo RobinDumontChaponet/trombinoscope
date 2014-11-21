@@ -1,6 +1,6 @@
 <?php
 
-include_once (dirname(__FILE__).'/../models/student.class.php');
+include_once('Student.class.php');
 
 class Group {
 	private $id;

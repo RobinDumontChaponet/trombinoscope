@@ -1,9 +1,9 @@
 <?php
 
-include(dirname(__FILE__).'/../models/group.class.php');
+include_once(MODELS_INC.'Group.class.php');
 
 $group = getGroupById($_GET['id']);
 
-include(dirname(__FILE__).'/../views/group.php');
+include(VIEWS_INC.'group.php');
 
 ?>
