@@ -4,7 +4,7 @@
 	<div>
 		Nom : <?php echo $student->getFirstName().' '.$student->getName(); ?>
 	</div>
-	<img id="result" src="style/images/nobody.png" alt="" />
+	<img id="result" src="<?php echo ((is_file('data/images/student-'.$student->getId().'.jpg'))?'data/images/student-'.$student->getId().'.jpg':'style/images/nobody.png'); ?>" alt="" />
 	<div id="file">
 		<fieldset id="add" class="button">
 			<label>Importez une image</label> <input type="file" id="fileinput" name="file"><img src="style/images/loader.gif" alt="chargement...">
