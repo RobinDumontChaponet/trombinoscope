@@ -44,4 +44,19 @@ function getAuths () {
 	return $auths;
 }
 
+function getAuthById () {
+	$auth = null;
+	try {
+		$connect = connect();
+		$statement = $connect->prepare('SELECT * FROM auth where idAuth');
+
+		$statement->execute();
+
+		$rs = $statement->fetch(PDO::FETCH_OBJ);
+		$auth= new Auth($rs->idAuth, $rs->name);
+	} catch (PDOException $e) {
+		die('Error!: ' . $e->getMessage() . '<br/>');
+	}
+	return $auth;
+}
 ?>

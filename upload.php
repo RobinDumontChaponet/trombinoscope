@@ -1,25 +1,22 @@
-<?php 
-/*session_start();
-if (!isset($_SESSION['colouringAdmin']) || $_SESSION['colouringAdmin']=='') {
+<?php
+session_start();
+if (!isset($_SESSION['trombiUser']) || $_SESSION['trombiUser']=='') {
 	exit();
-}*/
-//set_include_path('/srv/data/web/vhosts/www.colouring-tour.org/includes');
+}
 include 'transit.inc.php';
 
-$possibleDestinations = array('data/csv', 'data/truc');
-$canSub = array('data/csv');
+$possibleDestinations = array('data/csv', 'data/groups');
+$canSub = array('data/groups');
 
-/*$extImg = array('jpg', 'jpeg', 'png', 'gif');
-$extVid = array('mov', 'swf', 'fla');
-$extEmb = array('pdf');
-$possibleExtensions = array_merge($extImg, $extVid, $extEmb);*/
-$possibleExtensions = array('csv');
+$extImg = array('jpg', 'jpeg', 'png', 'gif', 'bmp');
+$extEmb = array('csv');
+$possibleExtensions = array_merge($extImg, $extEmb);
 
 $info=pathinfo($_FILES['upload']['name']);
 if($_REQUEST['basename']!='')
-	$info[basename]=post_slug($_REQUEST['basename'].'.'.$info['extension']);
+	$info['basename']=post_slug($_REQUEST['basename'].'.'.$info['extension']);
 else
-	$info[basename]=post_slug($info[basename]);
+	$info['basename']=post_slug($info['basename']);
 
 $fileType = $_FILES['upload']['type'];
 $destination = $_REQUEST['destination'];
@@ -33,16 +30,16 @@ if( trim($_REQUEST['sub'])!='' ) {
 			die('bad path ! ;-)');
 		else
 			$sub = '/'.$_REQUEST['sub'];
-	} else 
+	} else
 		die('bad path ! ;-)');
 }
 
 if ( in_array(strtolower($info['extension']), $possibleExtensions) ) {
 
 	$fileContent = file_get_contents($_FILES['upload']['tmp_name']);
-	if(file_put_contents($destination.$sub.'/'.$info[basename], $fileContent)!==false) {
+	if(file_put_contents($destination.$sub.'/'.$info['basename'], $fileContent)!==false) {
 		echo json_encode(array(
-		  'name' => $info[basename],
+		  'name' => $info['basename'],
 		  'type' => $fileType,
 		  'path' => $destination.$sub,
 		  'ext' => $info['extension']

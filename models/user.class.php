@@ -1,14 +1,16 @@
 <?php
 
+include_once (dirname(__FILE__).'/../models/auth.class.php');
+
 class User {
 	private $id
-	private $auth;
 	private $login;
+	private $auth;
 
-	public function __construct ($id, $auth, $login) {
+	public function __construct ($id, $login, $auth) {
 		$this->id=$id;
-		$this->auth=$auth;
 		$this->login=$login;
+		$this->auth=$auth;
 	}
 
 	public function getId () {
@@ -32,7 +34,7 @@ class User {
 	}
 
 	public function __toString () {
-		return 'User [ id : '.$this->id.'; auth : '.$this->auth.'; login : '.$this->login.']';
+		return 'User [ id : '.$this->id.'; login : '.$this->login.'; auth : '.$this->auth.' ]';
 	}
 }
 
@@ -45,7 +47,7 @@ function getUsers () {
 		$statement->execute();
 
 		while ($rs = $statement->fetch(PDO::FETCH_OBJ))
-			$users[]=new User($rs->idUser, $rs->auth, $rs->login);
+			$users[]=new User($rs->idUser, $rs->login, getAuthById($rs->auth));
 	} catch (PDOException $e) {
 		die('Error!: ' . $e->getMessage() . '<br/>');
 	}
