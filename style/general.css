@@ -157,13 +157,12 @@ nav a:before {
 	font-variant: normal;
 	text-transform: none;
 	line-height: 1;
-	font-variant: 100;
 }
 nav a[href="index.php"]:before, nav a[href="index"]:before {
-	content: "\e606";
+	content: "\e040";
 }
 nav a[href="deconnection.php"]:before, nav a[href="deconnection"]:before {
-	content: "\e60e";
+	content: "\e02c";
 }
 nav a[href="deconnection.php"] span, nav a[href="deconnection"] span {
 	display: none;
