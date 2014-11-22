@@ -10,5 +10,5 @@ if($authId==0 || $authId==2) {
 	include(VIEWS_INC.'groups.php');
 
 } else
-	include_once(CONTROLLERS_INC.'403.php');
+	include(CONTROLLERS_INC.'403.php');
 ?>
