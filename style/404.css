@@ -1,7 +1,8 @@
-#content {
+#wrapper > #content {
 	text-align: center;
+	box-shadow: none;
 }
-h1 {
+#content h1 {
 	font-size:404px;
 	font-weight:bold;
 	line-height:1;

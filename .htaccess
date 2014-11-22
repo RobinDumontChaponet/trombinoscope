@@ -1,0 +1,83 @@
+############# Charset & Types ######################
+AddType application/vnd.ms-fontobject .eot
+AddType application/x-font-ttf .ttf
+AddType application/x-font-opentype .otf
+AddType application/x-font-woff .woff
+AddType image/svg+xml .svg
+AddType application/octet-stream .zip
+
+AddDefaultCharset UTF-8
+#AddCharset UTF-8 .php
+#AddCharset UTF-8 .html
+
+############# Compatibility#######################
+<IfModule mod_setenvif.c>
+  <IfModule mod_headers.c>
+    BrowserMatch MSIE ie
+    Header set X-UA-Compatible "IE=Edge,chrome=1" env=ie
+  </IfModule>
+</IfModule>
+
+
+############# EXPIRES CACHING #####################
+####APPARANTLY DOES'NT WORK ON infodb2
+####->deleted
+############# EXPIRES CACHING #####################
+
+############# Security #############################
+##### UAgents BList
+<IfModule mod_setenvif.c>
+	SetEnvIfNoCase User-Agent (\<|\>|\'|\$x0|\%0A|\%0D|\%27|\%3C|\%3E|\%00|\+select|\+union|\&lt) keep_out
+	SetEnvIfNoCase User-Agent (binlar|casper|checkprivacy|cmsworldmap|comodo|curious|diavol|doco) keep_out
+	SetEnvIfNoCase User-Agent (dotbot|feedfinder|flicky|ia_archiver|jakarta|kmccrew|libwww|nutch) keep_out
+	SetEnvIfNoCase User-Agent (planetwork|purebot|pycurl|skygrid|sucker|turnit|vikspid|zmeu|zune) keep_out
+	<limit GET POST PUT>
+		Order Allow,Deny
+		Allow from all
+		Deny from env=keep_out
+		# Deny from all
+		# Deny from 111.222.333
+	</limit>
+</IfModule>
+
+#### Hosts BList
+<IfModule mod_rewrite.c>
+
+	RewriteEngine on
+
+	RewriteCond %{HTTP_HOST} (.*)\.crimea\.com [NC,OR]
+	RewriteCond %{HTTP_HOST} s368\.loopia\.se [NC,OR]
+	RewriteCond %{HTTP_HOST} kanagawa\.ocn [NC,OR]
+	RewriteCond %{HTTP_HOST} g00g1e [NC,OR]
+	RewriteCond %{HTTP_USER_AGENT} (g00g1e|seekerspider|siclab|spam|sqlmap) [NC]
+	RewriteRule .* - [F,L]
+
+#### Some joke
+	Redirect 301 /wp-config.php http://www.fbi.gov/
+</IfModule>
+
+
+############# Rewrites ###########################
+#<IfModule mod_rewrite.c>
+
+#### Maintenance Redirection
+#RewriteCond %{REQUEST_URI} !maintenance.html
+#RewriteCond %{REQUEST_FILENAME} !(styles|images).+$
+#RewriteCond %{REQUEST_URI} !/[style|js]/[^/]+
+#RewriteCond %{REMOTE_ADDR} !^80\.185\.62\.181$
+#RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$
+#RewriteRule $ /maintenance.html [R=307,L]
+
+#Redirect maintenance.html index.php
+
+
+###Specifics
+#RewriteRule ([^/]+) index.php?requ=$1 [NC]
+#RewriteRule groups$ index.php?requ=groups [NC]
+#RewriteRule group/([^/]+) index.php?requ=group&id=$1 [NC]
+
+#### Generals
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME}.php -f
+#RewriteRule (.*)$ $1.php
+#</IfModule>

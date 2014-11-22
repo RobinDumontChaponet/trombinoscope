@@ -1,9 +1,14 @@
 <?php
 
-include_once(MODELS_INC.'Group.class.php');
+$authId=$_SESSION['trombiUser']->getAuth()->getId();
+if($authId==0 || $authId==2) {
 
-$groups = getGroups();
+	include_once(MODELS_INC.'Group.class.php');
 
-include(VIEWS_INC.'groups.php');
+	$groups = getGroups();
 
+	include(VIEWS_INC.'groups.php');
+
+} else
+	include_once(CONTROLLERS_INC.'403.php');
 ?>

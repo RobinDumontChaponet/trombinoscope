@@ -1,4 +1,5 @@
 <?php
+define('CONTROLLERS_INC', dirname(__FILE__).'/controllers/');
 define('MODELS_INC', dirname(__FILE__).'/models/');
 define('VIEWS_INC', dirname(__FILE__).'/views/');
 
@@ -17,7 +18,7 @@ if (!isset($_SESSION['trombiUser']) || $_SESSION['trombiUser']=='') {
 function get_include_contents($filename) {
 	if (is_file($filename)) {
 		ob_start();
-		include (realpath($filename));
+		include ($filename);
 		return ob_get_clean();
 	}
 	return false;
@@ -26,15 +27,15 @@ function get_include_contents($filename) {
 set_include_path(dirname(__FILE__).'/includes');
 
 if(empty($_GET['requ']))
-	$_GET['requ']='groups';
+	$_GET['requ']='index';
 
-if(is_file('controllers/'.$_GET['requ'].'.php'))
-	$inc = get_include_contents('controllers/'.$_GET['requ'].'.php');
+if(is_file(CONTROLLERS_INC.$_GET['requ'].'.php'))
+	$inc = get_include_contents(CONTROLLERS_INC.$_GET['requ'].'.php');
 else {
 	header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
 	header("Status: 404 Not Found");
 	$_SERVER['REDIRECT_STATUS'] = 404;
-	$inc = get_include_contents('controllers/404.php');
+	$inc = get_include_contents(CONTROLLERS_INC.'404.php');
 }
 
 include('transit.inc.php');
@@ -62,6 +63,7 @@ if($matches[1]) {
 <!--[if gt IE 8]><html class="get-ie9" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
   <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<base href="<?php echo dirname($_SERVER['PHP_SELF']).'/' ?>" />
     <title><?php echo $title; ?></title>
     <!--[if IE]><link rel="shortcut icon" href="style/favicon-32.ico"><![endif]-->
 	<link rel="icon" href="style/favicon-96.png">
@@ -80,6 +82,6 @@ if($matches[1]) {
     <div id="wrapper">
 	  <?php include_once('menu.inc.php');
 	  echo $inc; ?>
-    </div>
+	</div>
   </body>
 </html>

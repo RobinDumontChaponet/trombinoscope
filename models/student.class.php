@@ -42,7 +42,7 @@ function getStudents () {
 		$statement = $connect->prepare('SELECT * FROM student');
 		$statement->execute();
 		while ($rs = $statement->fetch(PDO::FETCH_OBJ))
-			$students[]= new Student($rs->idStudent, $rs->name, $rs->firstName);
+			$students[]= new Student($rs->idUser, $rs->name, $rs->firstName);
 	} catch (PDOException $e) {
 		die("Error!: " . $e->getMessage() . "<br/>");
 	}
@@ -57,7 +57,7 @@ function getStudentsByGroup ($group) {
 		$statement->bindParam(1, $group->getId());
 		$statement->execute();
 		while ($rs = $statement->fetch(PDO::FETCH_OBJ))
-			$students[]= new Student($rs->idStudent, $rs->name, $rs->firstName);
+			$students[]= new Student($rs->idUser, $rs->name, $rs->firstName);
 	} catch (PDOException $e) {
 		die("Error!: " . $e->getMessage() . "<br/>");
 	}
@@ -68,12 +68,12 @@ function getStudentById ($id) {
 	$student=null;
 	try {
 		$connect = connect();
-		$statement = $connect->prepare('SELECT * FROM student WHERE idStudent=?');
+		$statement = $connect->prepare('SELECT * FROM student WHERE idUser=?');
 		$statement->bindParam(1, $id);
 		$statement->execute();
 
 		if($rs = $statement->fetch(PDO::FETCH_OBJ))
-			$student= new Student($rs->idStudent, $rs->name, $rs->firstName);
+			$student= new Student($rs->idUser, $rs->name, $rs->firstName);
 	} catch (PDOException $e) {
 		die("Error!: " . $e->getMessage() . "<br/>");
 	}
