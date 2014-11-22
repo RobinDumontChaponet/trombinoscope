@@ -5,10 +5,10 @@
   	<figcaption><?php echo $student->getFirstName().' '.$student->getName(); ?></figcaption>
   </figure>
   <div id="file">
-  	<fieldset id="add" class="button">
-  	  <label>Importez une image</label> <input type="file" id="fileinput" name="file"><img src="style/images/loader.gif" alt="chargement...">
-	</fieldset>
-  </div>
+        <fieldset id="add" class="button">
+            <label>Importez une image...</label> <input type="file" id="fileinput" name="file"> <img src="style/images/loader.gif" alt="chargement...">
+        </fieldset>
+    </div>
 </section>
 <script type="text/javascript">
 new FileTransfert(document.getElementById('fileinput'), 'student-<?php echo $student->getId(); ?>', 'data/images', '', function (resp) {
