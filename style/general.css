@@ -58,7 +58,7 @@ body {
 	padding-bottom:3.125em;
 }
 
-header {
+#wrapper > header {
 	padding:0 8%;
 	border-bottom:1px solid #d3d3d3;
 	margin-bottom:3em;
@@ -156,7 +156,7 @@ nav a:before {
 	text-transform: none;
 	line-height: 1;
 }
-nav a[href="index.php"]:before, nav a[href="index"]:before {
+nav a[href="index.php?requ=groups"]:before, nav a[href="groups"]:before {
 	content: "\e040";
 }
 nav a[href="deconnection.php"]:before, nav a[href="deconnection"]:before {
@@ -179,6 +179,11 @@ nav a[href="deconnection.php"] span, nav a[href="deconnection"] span {
 
 #wrapper > #content:after {
 	clear:both;
+}
+
+#content h1 {
+	display: inline-block;
+	font-weight: normal;
 }
 
 

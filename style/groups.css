@@ -14,10 +14,33 @@ ol li {
 	border:1px solid #d3d3d3;
 	border-bottom-width:0;
 	padding:0 10px;
+	position: relative;
 }
-
 ol li:last-child {
 	border-bottom-width:1px;
+}
+
+
+a[href="?requ=addgroup"] {
+
+}
+a[href="?requ=addgroup"]:after {
+	speak:none;
+	font-style:normal;
+	font-variant:normal;
+	text-transform:none;
+	line-height:61px;
+	cursor:pointer;
+	content: "+";
+	position: absolute;
+	right: 10px;
+	font-size: 24px;
+}
+
+
+ol li .date {
+	padding-left: 2%;
+	color: rgb(181, 181, 181);
 }
 
 ol aside {

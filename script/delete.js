@@ -1,3 +1,3 @@
-function delete (el) {
+function suppr (el) {
 
 }

@@ -1,25 +1,71 @@
+#content header {
+	box-shadow: 0 0 4px lightgrey;
+	font-size:16px;
+	line-height:60px;
+	color:#777;
+	background:#fff;
+	margin:0 0 30px;
+	border:1px solid #d3d3d3;
+	border-bottom-width:0;
+	padding:0 10px;
+}
+#content header:last-child {
+	border-bottom-width:1px;
+}
+
+#content header .date {
+	padding-left: 2%;
+	color: rgb(181, 181, 181);
+}
+
+#content header div {
+	float:right;
+}
+
+#content header div a:after {
+	font-family:'icomoon';
+	speak:none;
+	font-style:normal;
+	font-variant:normal;
+	text-transform:none;
+	line-height:1;
+	cursor:pointer;
+	content: "\e117";
+	position: relative;
+	top: 2px;
+}
+#content header a {
+	color: #777;
+	text-decoration: none;
+	padding:0 0 0 5px;
+}
+
+
+
 figure {
 	width: 200px;
 	min-height: 230px;
 	display: inline-block;
 	margin: 1%;
 	vertical-align: middle;
+	text-align: center;
 }
 figure.add {
-	text-indent:-9999px;
-}
-figure.add a {
 	position: relative;
 }
+figure.add a {
+	text-indent: -9999px;
+	display: inline-block;
+}
 figure.add a:before{
-	content: "\e613";
+	content: "\e083";
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
 	font-variant: normal;
 	text-transform: none;
-	line-height: 1.4em;
+	line-height: 1.25em;
 	padding: 0 10px;
 	border-radius: 8px;
 	cursor: pointer;
@@ -29,7 +75,11 @@ figure.add a:before{
 	text-align: center;
 	height: 100%;
 	position: absolute;
-	text-indent:9999px;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	text-indent: 0;
 }
 figure.add figcaption {
 	display: none;
