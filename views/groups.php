@@ -1,4 +1,4 @@
-<!--meta title="Trombinoscope | Groupes" js="script/delete.js"-->
+<!--meta title="Trombinoscope | Groupes" css="style/groups.css" js="script/delete.js"-->
 <section id="content">
   <ol>
   	<li><a href="?requ=addgroup" title="Ajouter un groupe">Ajouter un groupe</a></li>

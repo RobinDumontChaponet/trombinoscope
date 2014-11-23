@@ -3,7 +3,7 @@ session_start();
 if (!isset($_SESSION['trombiUser']) || $_SESSION['trombiUser']=='') {
 	exit();
 }
-include(dirname(__FILE__).'/includes/transit.inc.php');
+include(dirname(__FILE__).'/includes/urls.transit.inc.php');
 
 $possibleDestinations = array('data/csv', 'data/images');
 $canSub = array('data/groups');

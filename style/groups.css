@@ -1,0 +1,47 @@
+#wrapper > #content {
+	padding:0;
+	margin:0 8%;
+	line-height:1.7857;
+	box-shadow: 0 0 4px lightgrey;
+}
+
+ol li {
+	font-size:16px;
+	line-height:60px;
+	color:#777;
+	background:#fff;
+	margin:0;
+	border:1px solid #d3d3d3;
+	border-bottom-width:0;
+	padding:0 10px;
+}
+
+ol li:last-child {
+	border-bottom-width:1px;
+}
+
+ol aside {
+	float:right;
+}
+
+ol aside a:before {
+	font-family:'icomoon';
+	speak:none;
+	font-style:normal;
+	font-variant:normal;
+	text-transform:none;
+	line-height:1;
+	cursor:pointer;
+	content: "\e032";
+}
+ol a {
+	color: #777;
+	text-decoration: none;
+	padding:0 0 0 5px;
+}
+ol aside a span {
+	display: none;
+}
+ol aside a[title="supprimer"]:before {
+	content: "\e117";
+}

@@ -91,13 +91,4 @@ function cleanString($text) {
 function post_slug($str) {
     return strtolower(preg_replace(array('#[\\s-]+#', '#[^A-Za-z0-9\. -]+#'), array('-', ''), cleanString(urldecode($str))));
 }
-
-function rearrange( $arr ){
-    foreach( $arr as $key => $all ){
-        foreach( $all as $i => $val ){
-            $new[$i][$key] = $val;
-        }
-    }
-    return $new;
-}
 ?>
