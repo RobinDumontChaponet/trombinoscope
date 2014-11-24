@@ -45,6 +45,45 @@ class Group {
 	}
 }
 
+function createGroup ($group) {
+	try {
+		$connect = connect();
+		$statement = $connect->prepare('INSERT INTO group (idGroup, name, date) values (?, ?, ?)');
+		$statement->bindParam(1, $group->getId());
+		$statement->bindParam(2, $group->getName());
+		$statement->bindParam(3, $group->getDate());
+		$statement->execute();
+
+		return $connect->lastInsertId();
+	} catch (PDOException $e) {
+		die('Error!: ' . $e->getMessage() . '<br/>');
+	}
+}
+
+function updateGroup ($group) {
+	try {
+		$connect = connect();
+		$statement = $connect->prepare('UPDATE group SET name=?, date=? WHERE idGroup=?');
+		$statement->bindParam(1, $group->getName());
+		$statement->bindParam(2, $group->getDate());
+		$statement->bindParam(3, $group->getId());
+		$statement->execute();
+	} catch (PDOException $e) {
+		die('Error!: ' . $e->getMessage() . '<br/>');
+	}
+}
+
+function deleteGroup ($group) {
+	try {
+		$connect = connect();
+		$statement = $connect->prepare('DELETE FROM group WHERE idGroup=?');
+		$statement->bindParam(1, $group->getId());
+		$statement->execute();
+	} catch (PDOException $e) {
+		die('Error!: ' . $e->getMessage() . '<br/>');
+	}
+}
+
 function getGroups () {
 	$groups = array();
 	try {
@@ -70,6 +109,24 @@ function getGroupById ($id) {
 		$connect = connect();
 		$statement = $connect->prepare('SELECT * FROM `group` where idGroup=?');
 		$statement->bindParam(1, $id);
+		$statement->execute();
+
+		if($rs = $statement->fetch(PDO::FETCH_OBJ)) {
+			$group = new Group($rs->idGroup, $rs->name, $rs->date);
+			$group->setStudents(getStudentsByGroup($group));
+		}
+	} catch (PDOException $e) {
+		die('Error!: ' . $e->getMessage() . '<br/>');
+	}
+	return $group;
+}
+
+function getGroupByStudent ($student) {
+	$group=null;
+	try {
+		$connect = connect();
+		$statement = $connect->prepare('SELECT * FROM `group` where idGroup=(SELECT idGroup FROM student WHERE idUser=?)');
+		$statement->bindParam(1, $student->getId());
 		$statement->execute();
 
 		if($rs = $statement->fetch(PDO::FETCH_OBJ)) {

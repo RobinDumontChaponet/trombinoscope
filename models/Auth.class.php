@@ -28,6 +28,41 @@ class Auth {
 	}
 }
 
+function createAuth ($auth) {
+	try {
+		$connect = connect();
+		$statement = $connect->prepare('INSERT INTO auth (idAuth, name) values (?, ?)');
+		$statement->bindParam(1, $auth->getId());
+		$statement->bindParam(2, $auth->getName());
+		$statement->execute();
+
+		return $connect->lastInsertId();
+	} catch (PDOException $e) {
+		die('Error!: ' . $e->getMessage() . '<br/>');
+	}
+}
+function updateAuth ($auth) {
+	try {
+		$connect = connect();
+		$statement = $connect->prepare('UPDATE auth SET name=? WHERE idAuth=?');
+		$statement->bindParam(1, $auth->getName());
+		$statement->bindParam(2, $auth->getId());
+		$statement->execute();
+	} catch (PDOException $e) {
+		die('Error!: ' . $e->getMessage() . '<br/>');
+	}
+}
+function deleteAuth ($auth) {
+	try {
+		$connect = connect();
+		$statement = $connect->prepare('DELETE FROM auth WHERE idAuth=?');
+		$statement->bindParam(1, $auth->getId());
+		$statement->execute();
+	} catch (PDOException $e) {
+		die('Error!: ' . $e->getMessage() . '<br/>');
+	}
+}
+
 function getAuths () {
 	$auths = array();
 	try {
