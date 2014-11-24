@@ -8,7 +8,7 @@ class Group {
 	private $date;
 	private $students;
 
-	public function __construct ($id, $name, $date, $students=array()) {
+	public function __construct ($id=-1, $name='"Nouveau"', $date=' - ', $students=array()) {
 		$this->id=$id;
 		$this->name=$name;
 		$this->date=$date;
@@ -20,7 +20,7 @@ class Group {
 	public function getName () {
 		return $this->name;
 	}
-	public function getDate () {
+	public function getDateString () {
 		return $this->date;
 	}
 	public function getStudents () {
@@ -33,7 +33,7 @@ class Group {
 	public function setName ($name) {
 		return $this->name=$name;
 	}
-	public function setDate ($date) {
+	public function setDateString ($date) {
 		return $this->date=$date;
 	}
 	public function setStudents ($students) {
@@ -51,7 +51,7 @@ function createGroup ($group) {
 		$statement = $connect->prepare('INSERT INTO group (idGroup, name, date) values (?, ?, ?)');
 		$statement->bindParam(1, $group->getId());
 		$statement->bindParam(2, $group->getName());
-		$statement->bindParam(3, $group->getDate());
+		$statement->bindParam(3, $group->getDateString());
 		$statement->execute();
 
 		return $connect->lastInsertId();
@@ -65,7 +65,7 @@ function updateGroup ($group) {
 		$connect = connect();
 		$statement = $connect->prepare('UPDATE group SET name=?, date=? WHERE idGroup=?');
 		$statement->bindParam(1, $group->getName());
-		$statement->bindParam(2, $group->getDate());
+		$statement->bindParam(2, $group->getDateString());
 		$statement->bindParam(3, $group->getId());
 		$statement->execute();
 	} catch (PDOException $e) {
