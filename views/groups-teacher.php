@@ -4,7 +4,7 @@
 <?php if(count($groups)>0)
 	foreach ($groups as $group)
 		echo '<li><a href="?requ=group&id='.$group->getId().'" title="Voir le groupe">Groupe '.$group->getName();
-		if($group->getStartDate()!='' && $group->getEndDate()!='')
+		if($group->getStartDate()!='' || $group->getEndDate()!='')
 			echo '<span class="date">('.$group->getStartDate().'-'.$group->getEndDate().')</span>';
 		echo '</a></li>';
 ?>
