@@ -45,95 +45,94 @@ class User {
 	}
 }
 
-	function getUsers () {
-		$users = array();
-		try {
-			$connect = connect();
-			$statement = $connect->prepare('SELECT * FROM user');
+function createUser ($user) {
+	try {
+		$connect = connect();
+		$statement = $connect->prepare('INSERT INTO user (idAuth, login, pwd) values (?, ?, ?)');
+		$statement->bindParam(1, $user->auth->getId());
+		$statement->bindParam(2, $user->login);
+		$statement->bindParam(3, $user->pwd);
+		$statement->execute();
 
-			$statement->execute();
-
-			while ($rs = $statement->fetch(PDO::FETCH_OBJ))
-				$users[]=new User($rs->idUser, $rs->login, getAuthById($rs->idAuth));
-		} catch (PDOException $e) {
-			die('Error!: ' . $e->getMessage() . '<br/>');
-		}
-		return $users;
+		return $connect->lastInsertId();
+	} catch (PDOException $e) {
+		die('Error create user!: ' . $e->getMessage() . '<br/>');
 	}
+}
 
-	function getUserById ($id) {
-		$user = null;
-		try {
-			$connect = connect();
-			$statement = $connect->prepare('SELECT * FROM user where idUser=?');
-			$statement->bindParam(1, $id);
-			$statement->execute();
+function updateUser ($user) {
+	try {
+		$connect = connect();
+		$statement = $connect->prepare('UPDATE user SET idAuth=?, login=?, pwd=? WHERE idUser=?');
+		$statement->bindParam(1, $user->auth->getId());
+		$statement->bindParam(2, $user->getLogin());
+		$statement->bindParam(3, $user->getPwd());
+		$statement->bindParam(4, $user->getId());
+		$statement->execute();
 
-			if($rs = $statement->fetch(PDO::FETCH_OBJ))
-				$user=new User($rs->idUser, $rs->login, $rs->pwd, getAuthById($rs->idAuth));
-		} catch (PDOException $e) {
-			die('Error!: ' . $e->getMessage() . '<br/>');
-		}
-		return $user;
+		return $connect->lastInsertId();
+	} catch (PDOException $e) {
+		die('Error update user!: ' . $e->getMessage() . '<br/>');
 	}
+}
 
-	function getUserByLogin ($login) {
-		$user = null;
-		try {
-			$connect = connect();
-			$statement = $connect->prepare('SELECT * FROM user where login=?');
-			$statement->bindParam(1, $login);
-			$statement->execute();
+function deleteUser ($user) {
+	try {
+		$connect = connect();
+		$statement = $connect->prepare('DELETE FROM user WHERE idUser=?');
+		$statement->bindParam(1, $user->getId());
+		$statement->execute();
 
-			if($rs = $statement->fetch(PDO::FETCH_OBJ))
-				$user=new User($rs->idUser, $rs->login, $rs->pwd, getAuthById($rs->idAuth));
-		} catch (PDOException $e) {
-			die('Error!: ' . $e->getMessage() . '<br/>');
-		}
-		return $user;
+		return $connect->lastInsertId();
+	} catch (PDOException $e) {
+		die('Error delete user!: ' . $e->getMessage() . '<br/>');
+}
+
+function getUsers () {
+	$users = array();
+	try {
+		$connect = connect();
+		$statement = $connect->prepare('SELECT * FROM user');
+
+		$statement->execute();
+
+		while ($rs = $statement->fetch(PDO::FETCH_OBJ))
+			$users[]=new User($rs->idUser, $rs->login, getAuthById($rs->idAuth));
+	} catch (PDOException $e) {
+		die('Error!: ' . $e->getMessage() . '<br/>');
 	}
+	return $users;
+}
 
-	function createUser ($user) {
-		try {
-			$connect = connect();
-			$statement = $connect->prepare('INSERT INTO user (idAuth, login, pwd) values (?, ?, ?)');
-			$statement->bindParam(1, $user->auth->getId());
-			$statement->bindParam(2, $user->login);
-			$statement->bindParam(3, $user->pwd);
-			$statement->execute();
-			
-			return $connect->lastInsertId();
-		} catch (PDOException $e) {
-			die('Error create user!: ' . $e->getMessage() . '<br/>');
-		}
-	}
+function getUserById ($id) {
+	$user = null;
+	try {
+		$connect = connect();
+		$statement = $connect->prepare('SELECT * FROM user where idUser=?');
+		$statement->bindParam(1, $id);
+		$statement->execute();
 
-	function updateUser ($user) {
-		try {
-			$connect = connect();
-			$statement = $connect->prepare('UPDATE user SET idAuth=?, login=?, pwd=? WHERE idUser=?');
-			$statement->bindParam(1, $user->auth->getId());
-			$statement->bindParam(2, $user->getLogin());
-			$statement->bindParam(3, $user->getPwd());
-			$statement->bindParam(4, $user->getId());
-			$statement->execute();
-			
-			return $connect->lastInsertId();
-		} catch (PDOException $e) {
-			die('Error update user!: ' . $e->getMessage() . '<br/>');
-		}
+		if($rs = $statement->fetch(PDO::FETCH_OBJ))
+			$user=new User($rs->idUser, $rs->login, $rs->pwd, getAuthById($rs->idAuth));
+	} catch (PDOException $e) {
+		die('Error!: ' . $e->getMessage() . '<br/>');
 	}
+	return $user;
+}
 
-	function deleteUser ($user) {
-		try {
-			$connect = connect();
-			$statement = $connect->prepare('DELETE FROM user WHERE idUser=?');
-			$statement->bindParam(1, $user->getId());
-			$statement->execute();
-			
-			return $connect->lastInsertId();
-		} catch (PDOException $e) {
-			die('Error delete user!: ' . $e->getMessage() . '<br/>');
+function getUserByLogin ($login) {
+	$user = null;
+	try {
+		$connect = connect();
+		$statement = $connect->prepare('SELECT * FROM user where login=?');
+		$statement->bindParam(1, $login);
+		$statement->execute();
+
+		if($rs = $statement->fetch(PDO::FETCH_OBJ))
+			$user=new User($rs->idUser, $rs->login, $rs->pwd, getAuthById($rs->idAuth));
+	} catch (PDOException $e) {
+		die('Error!: ' . $e->getMessage() . '<br/>');
 	}
+	return $user;
 }
 ?>
