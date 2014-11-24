@@ -1,17 +1,19 @@
 <?php
 
-include_once('Student.class.php');
+include_once(MODELS_INC.'Student.class.php');
 
 class Group {
 	private $id;
 	private $name;
-	private $date;
+	private $startDate;
+	private $endDate;
 	private $students;
 
-	public function __construct ($id='', $name='Nouveau', $date=' - ', $students=array()) {
+	public function __construct ($id='', $name='Nouveau', $startDate='', $endDate='', $students=array()) {
 		$this->id=$id;
 		$this->name=$name;
-		$this->date=$date;
+		$this->startDate=$startDate;
+		$this->endDate=$endDate;
 	}
 
 	public function getId () {
@@ -20,8 +22,11 @@ class Group {
 	public function getName () {
 		return $this->name;
 	}
-	public function getDateString () {
-		return $this->date;
+	public function getStartDate () {
+		return $this->startDate;
+	}
+	public function getEndDate () {
+		return $this->endDate;
 	}
 	public function getStudents () {
 		return $this->students;
@@ -33,24 +38,28 @@ class Group {
 	public function setName ($name) {
 		return $this->name=$name;
 	}
-	public function setDateString ($date) {
-		return $this->date=$date;
+	public function setStartDate ($date) {
+		return $this->startDate=$date;
+	}
+	public function setEndDate ($date) {
+		return $this->endDate=$date;
 	}
 	public function setStudents ($students) {
 		return $this->students=$students;
 	}
 
 	public function __toString () {
-		return 'Group [ id : '.$this->id.'; name : '.$this->name.'; date : '.$this->date.'; students : '.$this->students.']';
+		return 'Group [ id : '.$this->id.'; name : '.$this->name.'; startDate : '.$this->startDate.'; endDate : '.$this->endDate.'; students : '.$this->students.']';
 	}
 }
 
 function createGroup ($group) {
 	try {
 		$connect = connect();
-		$statement = $connect->prepare('INSERT INTO `group` (idGroup, name, date) values (null, ?, ?)');
+		$statement = $connect->prepare('INSERT INTO `group` (idGroup, name, startDate, endDate) values (null, ?, ?, ?)');
 		$statement->bindParam(1, $group->getName());
-		$statement->bindParam(2, $group->getDateString());
+		$statement->bindParam(2, $group->getStartDate());
+		$statement->bindParam(3, $group->getEndDate());
 		$statement->execute();
 
 		return $connect->lastInsertId();
@@ -62,10 +71,11 @@ function createGroup ($group) {
 function updateGroup ($group) {
 	try {
 		$connect = connect();
-		$statement = $connect->prepare('UPDATE `group` SET name=?, date=? WHERE idGroup=?');
+		$statement = $connect->prepare('UPDATE `group` SET name=?, startDate=?, endDate=? WHERE idGroup=?');
 		$statement->bindParam(1, $group->getName());
-		$statement->bindParam(2, $group->getDateString());
-		$statement->bindParam(3, $group->getId());
+		$statement->bindParam(2, $group->getStartDate());
+		$statement->bindParam(3, $group->getEndDate());
+		$statement->bindParam(4, $group->getId());
 		$statement->execute();
 	} catch (PDOException $e) {
 		die('Error!: ' . $e->getMessage() . '<br/>');
@@ -92,7 +102,7 @@ function getGroups () {
 		$statement->execute();
 
 		while ($rs = $statement->fetch(PDO::FETCH_OBJ)) {
-			$group = new Group($rs->idGroup, $rs->name, $rs->date);
+			$group = new Group($rs->idGroup, $rs->name, $rs->startDate, $rs->endDate);
 			$group->setStudents(getStudentsByGroup($group));
 			$groups[]=$group;
 		}
@@ -111,7 +121,7 @@ function getGroupById ($id) {
 		$statement->execute();
 
 		if($rs = $statement->fetch(PDO::FETCH_OBJ)) {
-			$group = new Group($rs->idGroup, $rs->name, $rs->date);
+			$group = new Group($rs->idGroup, $rs->name, $rs->startDate, $rs->endDate);
 			$group->setStudents(getStudentsByGroup($group));
 		}
 	} catch (PDOException $e) {
@@ -129,7 +139,7 @@ function getGroupByStudent ($student) {
 		$statement->execute();
 
 		if($rs = $statement->fetch(PDO::FETCH_OBJ)) {
-			$group = new Group($rs->idGroup, $rs->name, $rs->date);
+			$group = new Group($rs->idGroup, $rs->name, $rs->startDate, $rs->endDate);
 			$group->setStudents(getStudentsByGroup($group));
 		}
 	} catch (PDOException $e) {

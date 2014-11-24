@@ -1,5 +1,6 @@
 <?php
-require_once('Auth.class.php');
+
+require_once(MODELS_INC.'Auth.class.php');
 
 class User {
 	private $id;

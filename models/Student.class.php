@@ -1,5 +1,5 @@
 <?php
-include_once('Group.class.php');
+include_once(MODELS_INC.'Group.class.php');
 
 class Student {
 	private $id;
