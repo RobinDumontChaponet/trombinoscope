@@ -7,7 +7,9 @@ if($authId==0 || $authId==2) {
 	if(empty($_GET['id']))
 		$group = new Group();
 		if(!empty($_POST)) {
-
+			$group->setName($_POST['name']);
+			$group->setDate($_POST['date']);
+			createGroup($group);
 		}
 	else
 		$group = getGroupById($_GET['id']);
