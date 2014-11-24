@@ -22,29 +22,31 @@ if($authId==0 || $authId==2) {
 	if(!isset($_GET['id']) || empty($_GET['id'])) {
 		$group = new Group();
 		if(!empty($_POST)) {
-			$valid = validate();
 			if($authId==0) {
-				$group = new Group(-1, $_POST['name'], $_POST['startDate'], $_POST['endDate']);
-				createGroup($group);
+				$valid = validate();
+				if ($valid) {
+					$group = new Group(-1, $_POST['name'], $_POST['startDate'], $_POST['endDate']);
+					createGroup($group);
+				}
 			} else
 				include(CONTROLLERS_INC.'403.php');
 		}
 	} else {
 		$group = getGroupById($_GET['id']);
 		if(!empty($_POST)) {
-			$valid = validate();
 			if($authId==0) {
-				$group->setName($_POST["name"]);
-				$group->setStartDate($_POST["startDate"]);
-				$group->setEndDate($_POST["endDate"]);
-				updateGroup($group);
+				$valid = validate();
+				if ($valid) {
+					$group->setName($_POST["name"]);
+					$group->setStartDate($_POST["startDate"]);
+					$group->setEndDate($_POST["endDate"]);
+					updateGroup($group);
+				}
 			} else
 				include(CONTROLLERS_INC.'403.php');
 		}
 	}
-
 	include(VIEWS_INC.'group-'.(($authId==0)?'admin':'teacher').'.php');
 } else
 	include(CONTROLLERS_INC.'403.php');
-
 ?>
