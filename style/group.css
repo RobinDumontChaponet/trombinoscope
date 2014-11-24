@@ -27,22 +27,17 @@
 	float:right;
 }
 
-#content header div a:after {
-	font-family:'icomoon';
-	speak:none;
-	font-style:normal;
-	font-variant:normal;
-	text-transform:none;
-	line-height:1;
-	cursor:pointer;
-	content: "\e117";
-	position: relative;
-	top: 2px;
-}
-#content header a {
+#content header a, #content header div input {
 	color: #777;
+	font-weight: normal;
 	text-decoration: none;
 	padding:0 0 0 5px;
+	border: 1px solid grey;
+	padding: 5px;
+	background: rgb(240, 240, 240);
+	border-radius: 3px;
+	margin: 0 4px 0 0;
+	cursor: pointer;
 }
 
 
