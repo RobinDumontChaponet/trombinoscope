@@ -1,8 +1,8 @@
 <!--meta title="Trombinoscope | Groupe <?php echo $group->getName(); ?>" css="style/group.css"-->
 <section id="content">
 <?php
-if ($valid != 0)
-	echo 'Vous devez renseigner une date de début et de fin sous le format : AAAA - AAAA';
+if ($a == 1)
+	echo 'qzrqzrzq';
 else if ($valid == 2)
 	echo 'La date de fin doit être numérique et sous forme : AAAA';
 else if ($valid == 3)

@@ -1,13 +1,14 @@
 <?php
-$valid = 0;
+	$a = array();
 function validate () {
-	$valid = 0;
+	$valid = 1;
 	if (!is_numeric($_POST['startDate']))
-		$valid = 1;
-	else if (!is_numeric($_POST['endDate']))
-		$valid = 2;
-	else if (empty(trim($_GET['name'])))
-		$valid = 3;
+		$a[0] = 'startDate';
+	if (!is_numeric($_POST['endDate']))
+		$a[1] = 'endDate';
+	if (trim($_POST['name']) == '')
+		$a[2] = 'name';
+	var_dump($a);
 	return $valid;
 }
 
