@@ -5,9 +5,8 @@ if($authId==0 || $authId==2) {
 	include_once(MODELS_INC.'Group.class.php');
 
 	if(empty($_GET['id']))
-		if(empty($_POST))
-			$group = new Group();
-		else {
+		$group = new Group();
+		if(!empty($_POST)) {
 
 		}
 	else
