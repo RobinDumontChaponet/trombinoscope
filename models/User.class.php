@@ -86,6 +86,7 @@ function deleteUser ($user) {
 		return $connect->lastInsertId();
 	} catch (PDOException $e) {
 		die('Error delete user!: ' . $e->getMessage() . '<br/>');
+	}
 }
 
 function getUsers () {
