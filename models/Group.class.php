@@ -1,6 +1,6 @@
 <?php
 
-include_once(MODELS_INC.'Student.class.php');
+include_once('Student.class.php');
 
 class Group {
 	private $id;
