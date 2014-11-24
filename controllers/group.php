@@ -2,11 +2,11 @@
 $valid=null;
 function validate () {
 	$valid = array();
-	if (isset($_POST['startDate']) && !is_numeric($_POST['startDate']))
+	if (isset($_POST['startDate']) && trim($_POST['startDate'])!='' && (!is_numeric($_POST['startDate']) || strlen($_POST['startDate'])<4 ))
 		$valid['startDate'] = 0;
 	else
 		$valid['startDate'] = 1;
-	if (isset($_POST['endDate']) && !is_numeric($_POST['endDate']))
+	if (isset($_POST['endDate']) && trim($_POST['endDate'])!='' && (!is_numeric($_POST['endDate']) || strlen($_POST['endDate'])<4 ))
 		$valid['endDate'] = 0;
 	else
 		$valid['endDate'] = 1;
@@ -15,7 +15,6 @@ function validate () {
 	else
 		$valid['name'] = 1;
 	$valid[0]=$valid['startDate']*$valid['endDate']*$valid['name'];
-	var_dump($valid);
 	return $valid;
 }
 
@@ -37,7 +36,7 @@ if($authId==0 || $authId==2) {
 		if(!empty($_POST)) {
 			if($authId==0) {
 				$valid = validate();
-				if (!$valid[0]) {
+				if ($valid[0]) {
 					$group = new Group(-1, $_POST['name'], $_POST['startDate'], $_POST['endDate']);
 					createGroup($group);
 				}
@@ -49,7 +48,7 @@ if($authId==0 || $authId==2) {
 		if(!empty($_POST)) {
 			if($authId==0) {
 				$valid = validate();
-				if (!$valid[0]) {
+				if ($valid[0]) {
 					$group->setName($_POST["name"]);
 					$group->setStartDate($_POST["startDate"]);
 					$group->setEndDate($_POST["endDate"]);
