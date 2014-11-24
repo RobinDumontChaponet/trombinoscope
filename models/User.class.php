@@ -1,5 +1,4 @@
 <?php
-
 require_once('Auth.class.php');
 
 class User {
@@ -109,7 +108,6 @@ class User {
 		}
 	}
 
-<<<<<<< HEAD
 	function updateUser ($user) {
 		try {
 			$connect = connect();
@@ -139,6 +137,3 @@ class User {
 	}
 }
 ?>
-=======
-?>
->>>>>>> origin/master
