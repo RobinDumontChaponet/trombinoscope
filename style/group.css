@@ -27,7 +27,7 @@
 	float:right;
 }
 
-#content header a, #content header div input {
+#content header a, input[type=submit] {
 	color: #777;
 	font-weight: normal;
 	text-decoration: none;
@@ -46,12 +46,12 @@ figure {
 	width: 200px;
 	height: 250px;
 	display: inline-block;
-	margin: 1%;
+	margin: 1% 1% 28px;
 	vertical-align: middle;
 	text-align: center;
+	position: relative;
 }
 figure.add {
-	position: relative;
 	border: 4px solid #fff;
 	box-shadow: 0 0 8px lightgrey;
 }
@@ -96,4 +96,9 @@ figure img {
 figcaption {
 	font-size: 14px;
 	line-height: 14px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 100%;
+	margin-top: 5px;
 }

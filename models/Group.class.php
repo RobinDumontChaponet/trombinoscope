@@ -9,7 +9,7 @@ class Group {
 	private $endDate;
 	private $students;
 
-	public function __construct ($id='', $name='Nouveau', $startDate='', $endDate='', $students=array()) {
+	public function __construct ($id='', $name='', $startDate='', $endDate='', $students=array()) {
 		$this->id=$id;
 		$this->name=$name;
 		$this->startDate=$startDate;
