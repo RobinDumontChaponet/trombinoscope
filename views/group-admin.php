@@ -1,7 +1,7 @@
 <!--meta title="Trombinoscope | Groupe <?php echo $group->getName(); ?>" css="style/group.css"-->
 <section id="content">
 <?php
-echo '<header><form action = ""><h1>Groupe <input type="text" value="'.$group->getName().'"></h1><span class="date">(<input type="text" value="'.$group->getDateString().'">)</span><div><a href="?requ=suppr&id='.$group->getId().'" onclick="suppr(this); return false" title="supprimer"><span>Supprimer</span></a></div><input type="submit" value="Submit"></form></header>';
+echo '<header><form action = "index.php?requ=group&id='.$group->getId().'"><h1>Groupe <input type="text" value="'.$group->getName().'"></h1><span class="date">(<input type="text" value="'.$group->getDateString().'">)</span><div><a href="?requ=suppr&id='.$group->getId().'" onclick="suppr(this); return false" title="supprimer"><span>Supprimer</span></a></div><input type="submit" value="Submit"></form></header>';
 ?>
   <figure class="add">
 	<a href="?requ=addStudent" title="Ajouter un élève">Ajouter</a>
