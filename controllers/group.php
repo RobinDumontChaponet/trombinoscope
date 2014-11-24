@@ -12,7 +12,9 @@ if($authId==0 || $authId==2) {
 	else
 		$group = getGroupById($_GET['id']);
 		if(!empty($_POST)) {
-
+			$group->setName = $_POST["name"];
+			$group->setDateSring = $_POST["date"];
+			updateGroup($group);
 		}
 
 	include(VIEWS_INC.'group-'.(($authId==0)?'admin':'teacher').'.php');
