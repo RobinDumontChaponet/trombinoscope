@@ -8,7 +8,7 @@ class Group {
 	private $date;
 	private $students;
 
-	public function __construct ($id=-1, $name='"Nouveau"', $date=' - ', $students=array()) {
+	public function __construct ($id=-1, $name='\'Nouveau\'', $date=' - ', $students=array()) {
 		$this->id=$id;
 		$this->name=$name;
 		$this->date=$date;
