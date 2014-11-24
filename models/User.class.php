@@ -109,6 +109,7 @@ class User {
 		}
 	}
 
+<<<<<<< HEAD
 	function updateUser ($user) {
 		try {
 			$connect = connect();
@@ -138,3 +139,6 @@ class User {
 	}
 }
 ?>
+=======
+?>
+>>>>>>> origin/master
