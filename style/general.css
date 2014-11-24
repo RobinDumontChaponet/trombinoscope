@@ -157,6 +157,9 @@ nav a:before {
 	line-height: 1;
 }
 nav a[href="index.php?requ=groups"]:before, nav a[href="groups"]:before {
+	content: "\e019";
+}
+nav a[href="index.php?requ=students"]:before, nav a[href="students"]:before {
 	content: "\e040";
 }
 nav a[href="deconnection.php"]:before, nav a[href="deconnection"]:before {
