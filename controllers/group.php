@@ -1,4 +1,10 @@
 <?php
+function validate () {
+	$valid = true;
+	if (!is_numeric($_POST['startDate']) || !is_numeric($_POST['endDate']))
+		$valid = false;
+	return $valid;
+}
 
 $authId=$_SESSION['trombiUser']->getAuth()->getId();
 if($authId==0 || $authId==2) {
@@ -16,6 +22,7 @@ if($authId==0 || $authId==2) {
 	if(!isset($_GET['id']) || empty($_GET['id'])) {
 		$group = new Group();
 		if(!empty($_POST)) {
+			$valid = validate();
 			if($authId==0) {
 				$group = new Group(-1, $_POST['name'], $_POST['startDate'], $_POST['endDate']);
 				createGroup($group);
@@ -25,6 +32,7 @@ if($authId==0 || $authId==2) {
 	} else {
 		$group = getGroupById($_GET['id']);
 		if(!empty($_POST)) {
+			$valid = validate();
 			if($authId==0) {
 				$group->setName($_POST["name"]);
 				$group->setStartDate($_POST["startDate"]);
