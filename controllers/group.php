@@ -17,7 +17,7 @@ if($authId==0 || $authId==2) {
 		$group = new Group();
 		if(!empty($_POST)) {
 			if($authId==0) {
-				$group = new Group(-1, $_POST['name'], $_POST['date']);
+				$group = new Group(-1, $_POST['name'], $_POST['startdDate'], $_POST['endDate']);
 				createGroup($group);
 			} else
 				include(CONTROLLERS_INC.'403.php');
@@ -27,7 +27,8 @@ if($authId==0 || $authId==2) {
 		if(!empty($_POST)) {
 			if($authId==0) {
 				$group->setName($_POST["name"]);
-				$group->setDateString($_POST["date"]);
+				$group->setStartDate($_POST["startDate"]);
+				$group->setEndDate($_POST["endDate"]);
 				updateGroup($group);
 			} else
 				include(CONTROLLERS_INC.'403.php');
