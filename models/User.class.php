@@ -94,4 +94,47 @@ function getUserByLogin ($login) {
 	return $user;
 }
 
+function createUser ($user) {
+	try {
+		$connect = connect();
+		$statement = $connect->prepare('INSERT INTO user (idAuth, login, pwd) values (?, ?, ?)');
+		$statement->bindParam(1, $user->auth->getId());
+		$statement->bindParam(2, $user->login);
+		$statement->bindParam(3, $user->pwd);
+		$statement->execute();
+		
+		return $connect->lastInsertId();
+	} catch (PDOException $e) {
+		die('Error create user!: ' . $e->getMessage() . '<br/>');
+	}
+}
+
+function updateUser ($user) {
+	try {
+		$connect = connect();
+		$statement = $connect->prepare('UPDATE user SET idAuth=?, login=?, pwd=? WHERE idUser=?');
+		$statement->bindParam(1, $user->auth->getId());
+		$statement->bindParam(2, $user->getLogin());
+		$statement->bindParam(3, $user->getPwd());
+		$statement->bindParam(4, $user->getId());
+		$statement->execute();
+		
+		return $connect->lastInsertId();
+	} catch (PDOException $e) {
+		die('Error update user!: ' . $e->getMessage() . '<br/>');
+	}
+}
+
+function deleteUser ($user) {
+	try {
+		$connect = connect();
+		$statement = $connect->prepare('DELETE FROM user WHERE idUser=?');
+		$statement->bindParam(1, $user->getId());
+		$statement->execute();
+		
+		return $connect->lastInsertId();
+	} catch (PDOException $e) {
+		die('Error delete user!: ' . $e->getMessage() . '<br/>');
+	}
+}
 ?>
