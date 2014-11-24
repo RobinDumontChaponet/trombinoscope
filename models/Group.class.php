@@ -8,7 +8,7 @@ class Group {
 	private $date;
 	private $students;
 
-	public function __construct ($id=-1, $name='\'Nouveau\'', $date=' - ', $students=array()) {
+	public function __construct ($id='', $name='Nouveau', $date=' - ', $students=array()) {
 		$this->id=$id;
 		$this->name=$name;
 		$this->date=$date;
@@ -48,10 +48,9 @@ class Group {
 function createGroup ($group) {
 	try {
 		$connect = connect();
-		$statement = $connect->prepare('INSERT INTO group (idGroup, name, date) values (?, ?, ?)');
-		$statement->bindParam(1, $group->getId());
-		$statement->bindParam(2, $group->getName());
-		$statement->bindParam(3, $group->getDateString());
+		$statement = $connect->prepare('INSERT INTO `group` (idGroup, name, date) values (null, ?, ?)');
+		$statement->bindParam(1, $group->getName());
+		$statement->bindParam(2, $group->getDateString());
 		$statement->execute();
 
 		return $connect->lastInsertId();
@@ -63,7 +62,7 @@ function createGroup ($group) {
 function updateGroup ($group) {
 	try {
 		$connect = connect();
-		$statement = $connect->prepare('UPDATE group SET name=?, date=? WHERE idGroup=?');
+		$statement = $connect->prepare('UPDATE `group` SET name=?, date=? WHERE idGroup=?');
 		$statement->bindParam(1, $group->getName());
 		$statement->bindParam(2, $group->getDateString());
 		$statement->bindParam(3, $group->getId());
@@ -76,7 +75,7 @@ function updateGroup ($group) {
 function deleteGroup ($group) {
 	try {
 		$connect = connect();
-		$statement = $connect->prepare('DELETE FROM group WHERE idGroup=?');
+		$statement = $connect->prepare('DELETE FROM `group` WHERE idGroup=?');
 		$statement->bindParam(1, $group->getId());
 		$statement->execute();
 	} catch (PDOException $e) {
