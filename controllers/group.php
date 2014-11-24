@@ -7,7 +7,11 @@ if($authId==0 || $authId==2) {
 	if(empty($_GET['id']))
 		$group = new Group();
 	else
-		$group = getGroupById($_GET['id']);
+		if(empty($_POST))
+			$group = getGroupById($_GET['id']);
+		else {
+
+		}
 
 	include(VIEWS_INC.'group-'.(($authId==0)?'admin':'teacher').'.php');
 } else
