@@ -188,8 +188,39 @@ nav a[href="deconnection.php"] span, nav a[href="deconnection"] span {
 }
 
 #content h1 {
-	display: inline-block;
 	font-weight: normal;
+}
+
+#content header a, input[type=submit] {
+	color: #777;
+	font-weight: normal;
+	text-decoration: none;
+	padding:0 0 0 5px;
+	border: 1px solid grey;
+	padding: 5px;
+	background: rgb(240, 240, 240);
+	border-radius: 3px;
+	margin: 0 auto;
+	cursor: pointer;
+}
+
+ol {
+	box-shadow: 0 0 4px lightgrey;
+	margin-bottom: 40px;
+}
+ol li {
+	font-size:16px;
+	line-height:60px;
+	color:#777;
+	background:#fff;
+	margin:0;
+	border:1px solid #d3d3d3;
+	border-bottom-width:0;
+	padding:0 10px;
+	position: relative;
+}
+ol li:last-child {
+	border-bottom-width:1px;
 }
 
 ol li .date {

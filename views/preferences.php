@@ -1,7 +1,17 @@
-<!--meta title="Trombinoscope | Options admin"-->
+<!--meta title="Trombinoscope | Réglages" css="style/preferences.css"-->
 <section id="content" class="admin">
 
-<ol>
-	<?php echo '<li><form action="" method="post"><h1>Nom de compte : '.$admin->getLogin().'</h1><span>Mot de passe : <input type="password" name="pwdAdmin" value="" placeholder="Password"></span><div><input type="submit" value="Enregistrer" title="Enregistrer"></a></div></li><li><h1>Nom de compte : '.$teacher->getLogin().'</h1><span>Mot de passe : <input type="password" name="pwdTeacher" value="" placeholder="Password"></span><div><input type="submit" value="Enregistrer" title="Enregistrer"></a></div></form></li>';?>
-</ol>
+<form action="" method="post">
+  <ol>
+	<li>
+	  <h1>Nom de compte : <?php echo $admin->getLogin();?></h1>
+	  <label for="pwdAdmin">Mot de passe :</label><input type="password" id="pwdAdmin" name="pwdAdmin" value="" placeholder="Password">
+	</li>
+	<li>
+	  <h1>Nom de compte : <?php echo $teacher->getLogin();?></h1>
+	  <label for="pwdTeacher">Mot de passe :</label><input type="password" name="pwdTeacher" value="" placeholder="Password">
+	</li>
+  </ol>
+  <input type="submit" value="Enregistrer" title="Enregistrer" />
+</form>
 </section>

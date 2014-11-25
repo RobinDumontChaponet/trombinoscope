@@ -12,7 +12,9 @@
 #content header:last-child {
 	border-bottom-width:1px;
 }
-
+#content header h1 {
+	display: inline-block;
+}
 #content header .date {
 	padding-left: 2%;
 	color: rgb(181, 181, 181);
@@ -26,21 +28,6 @@
 #content header div {
 	float:right;
 }
-
-#content header a, input[type=submit] {
-	color: #777;
-	font-weight: normal;
-	text-decoration: none;
-	padding:0 0 0 5px;
-	border: 1px solid grey;
-	padding: 5px;
-	background: rgb(240, 240, 240);
-	border-radius: 3px;
-	margin: 0 4px 0 0;
-	cursor: pointer;
-}
-
-
 
 figure {
 	width: 200px;

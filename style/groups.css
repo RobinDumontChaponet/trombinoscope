@@ -1,30 +1,7 @@
-#wrapper > #content {
-	padding:0;
-	margin:0 8%;
-	line-height:1.7857;
-	box-shadow: 0 0 4px lightgrey;
-}
-
-ol li {
-	font-size:16px;
-	line-height:60px;
-	color:#777;
-	background:#fff;
-	margin:0;
-	border:1px solid #d3d3d3;
-	border-bottom-width:0;
-	padding:0 10px;
-	position: relative;
-}
-ol li:last-child {
-	border-bottom-width:1px;
-}
-
-
-a[href="?requ=addgroup"] {
+a[href="?requ=group"] {
 
 }
-a[href="?requ=addgroup"]:after {
+a[href="?requ=group"]:after {
 	speak:none;
 	font-style:normal;
 	font-variant:normal;
