@@ -51,7 +51,11 @@ class Student {
 function createStudent ($student) {
 	try {
 		$connect = connect();
-		$statement = $connect->prepare('INSERT INTO student (name, firstName, idGroup) values(?, ?, ?)');
+		// En vue de la création d'un user/student
+		//substr($student->getName(), 0, 4).substr($student->getFirstName(), 0, 4)	Permet de récupérer les 4 premières lettre du prénom et nom Ex : Jozwicki Victor --> JozwVict pour le login user, rajouter un nombre après ?
+		//$user = new User(-1, substr($student->getName(), 0, 4).substr($student->getFirstName(), 0, 4), test,1);	//IdUser : -1, login : Au dessus, pwd : A générer et crypter, idAuth : 1 pour student
+		//var_dump($user); ["id":"User":private]=> int(-1) ["login":"User":private]=> string(5) "JozwVict" ["pwd":"User":private]=> string(4) "test" ["auth":"User":private]=> int(1) 
+		$statement = $connect->prepare('INSERT INTO student (name, firstName, idGroup) values(?, ?, ?)');	//Ajouter idUser avec param $user->getId();
 		$statement->bindParam(1, $student->getName());
 		$statement->bindParam(2, $student->getFirstName());
 		$statement->bindParam(3, getGroupByStudent($student)->getId());
