@@ -147,5 +147,4 @@ function getGroupByStudent ($student) {
 	}
 	return $group;
 }
-
 ?>

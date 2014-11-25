@@ -2,10 +2,26 @@
 	text-align: center;
 	box-shadow: none;
 }
+#wrapper > #content.admin {
+	text-align: left;
+}
 
+.admin figure {
+	float: left;
+	margin-left: 10%;
+}
+.admin form {
+	display: inline-block;
+	margin-top: 20px;
+	margin-left: 5%;
+	padding-left: 5%;
+	border-left: 1px solid #ececec;
+}
+label {
+	display: block;
+}
 input[type=text] {
 	background: transparent;
-	text-align: center;
 }
 input[type=submit] {
 	margin-top: 20px;

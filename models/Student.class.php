@@ -5,7 +5,7 @@ class Student {
 	private $id;
 	private $name, $firstName;
 
-	public function __construct ($id, $name, $firstName) {
+	public function __construct ($id='', $name, $firstName) {
 		$this->id=$id;
 		$this->name=$name;
 		$this->firstName=$firstName;
@@ -31,6 +31,18 @@ class Student {
 		$this->firstName=$firstName;
 	}
 
+	public function setStudentGroup ($group) {
+		try {
+			$connect = connect();
+			$statement = $connect->prepare('UPDATE student SET idGroup=? WHERE idUser=?');
+			$statement->bindParam(1, $group->getId());
+			$statement->bindParam(2, $this->getId());
+			$statement->execute();
+		} catch (PDOException $e) {
+			die('Error!: ' . $e->getMessage() . '<br/>');
+		}
+	}
+
 	public function __toString () {
 		return 'Student [ id : '.$this->id.'; name : '.$this->name.'; firstName : '.$this->firstName.' ]';
 	}
@@ -42,7 +54,7 @@ function createStudent ($student) {
 		$statement = $connect->prepare('INSERT INTO student (name, firstName, idGroup) values(?, ?, ?)');
 		$statement->bindParam(1, $student->getName());
 		$statement->bindParam(2, $student->getFirstName());
-		$statement->bindParam(3, $student->getGroupByStudent($student));
+		$statement->bindParam(3, getGroupByStudent($student)->getId());
 		$statement->execute();
 
 		return $connect->lastInsertId();
@@ -57,7 +69,7 @@ function updateStudent ($student) {
 		$statement = $connect->prepare('UPDATE student SET name=?, firstName=?, idGroup=? WHERE idUser=?');
 		$statement->bindParam(1, $student->getName());
 		$statement->bindParam(2, $student->getFirstName());
-		$statement->bindParam(3, $student->getGroupByStudent($student));
+		$statement->bindParam(3, getGroupByStudent($student)->getId());
 		$statement->bindParam(4, $student->getId());
 		$statement->execute();
 	} catch (PDOException $e) {

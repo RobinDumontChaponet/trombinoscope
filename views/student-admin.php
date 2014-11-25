@@ -1,5 +1,5 @@
 <!--meta title="Trombinoscope | Importez une image" css="style/group.css" css="style/student.css"-->
-<section id="content">
+<section id="content" class="admin">
   <figure>
     <img id="result" src="<?php echo ((is_file('data/images/thumbnails/student-'.$student->getId().'.jpg'))?'data/images/thumbnails/student-'.$student->getId().'.jpg':'style/images/nobody.png'); ?>" alt="" />
   </figure>
@@ -14,7 +14,6 @@ foreach($groups as $group)
 	echo '		<option value="'.$group->getId().'" '.(($studentGroup->getId()==$group->getId())?' selected':'').'>'.$group->getName().'</option>';
 ?>
 	</select>
+	<br /><input type="submit" value="Enregistrer" />
   </form>
-  <br />
-  <input type="submit" value="Enregistrer" />
 </section>
