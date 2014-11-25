@@ -14,7 +14,12 @@ function validate () {
 		$valid['name'] = 0;
 	else
 		$valid['name'] = 1;
-	$valid[0]=$valid['startDate']*$valid['endDate']*$valid['name'];
+	if (isset($_POST['startDate']) && trim($_POST['startDate'])!='' && (is_numeric($_POST['startDate'])) && $_POST['startDate'] > $_POST['endDate'])
+		$valid['inferior'] = 0;
+	else
+		$valid['inferior'] = 1;
+
+	$valid[0]=$valid['startDate']*$valid['endDate']*$valid['name']*$valid['inferior'];
 	return $valid;
 }
 
