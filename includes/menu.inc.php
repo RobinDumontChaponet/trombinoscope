@@ -4,6 +4,7 @@ switch ($_SESSION['trombiUser']->getAuth()->getId()) {
 		$items = array(
 			'trombi/index.php?requ=groups' => '<a href="index.php?requ=groups" title="Voir tous les groupes"><span>Groupes</span></a>',
 			'trombi/index.php?requ=students' => '<a href="index.php?requ=students" title="Voir tous les étudiant"><span>Étudiants</span></a>',
+			'trombi/index.php?requ=preferences' => '<a href="index.php?requ=preferences" title="Modifier les réglages"><span>Réglages</span></a>',
 			'' => '<a href="deconnection.php" title="Se déconnecter"><span>Déconnexion</span></a>'
 		);
 	break;

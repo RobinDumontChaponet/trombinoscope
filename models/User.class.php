@@ -99,7 +99,7 @@ function getUsers () {
 		$statement->execute();
 
 		while ($rs = $statement->fetch(PDO::FETCH_OBJ))
-			$users[]=new User($rs->idUser, $rs->login, getAuthById($rs->idAuth));
+			$users[]=new User($rs->idUser, $rs->login, $rs->pwd, getAuthById($rs->idAuth));
 	} catch (PDOException $e) {
 		die('Error!: ' . $e->getMessage() . '<br/>');
 	}

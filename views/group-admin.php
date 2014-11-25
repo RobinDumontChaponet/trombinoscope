@@ -1,4 +1,4 @@
-<!--meta title="Trombinoscope | Groupe <?php echo $group->getName(); ?>" css="style/group.css"-->
+<!--meta title="Trombinoscope | <?php echo (empty($_GET['id'])?'Nouveau groupe':'Groupe '.$group->getName());?>" css="style/group.css"-->
 <section id="content">
 <?php
 if($valid) {
