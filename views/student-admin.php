@@ -9,6 +9,7 @@
   	<label for="group">Groupe :</label>
   	<select id="group" name="group">
 	  <option value="" disabled style="display:none;">Groupe :</option>
+	  <option value="null"<?php echo (($studentGroup->getId()==null)?' selected':'');?>> </option>
 <?php
 foreach($groups as $group)
 	echo '		<option value="'.$group->getId().'" '.(($studentGroup->getId()==$group->getId())?' selected':'').'>'.$group->getName().'</option>';
@@ -16,4 +17,11 @@ foreach($groups as $group)
 	</select>
 	<br /><input type="submit" value="Enregistrer" />
   </form>
+<?php
+if($valid) {
+	if(!$valid['name'])
+		echo '<p class="error">Un nom doit être renseigné</p>';
+	if(!$valid['name'])
+		echo '<p class="error">Un prénom doit être renseigné</p>';
+} ?>
 </section>

@@ -8,7 +8,7 @@ class User {
 	private $pwd;
 	private $auth;
 
-	public function __construct ($id, $login, $pwd, $auth) {
+	public function __construct ($id='', $login='', $pwd='', $auth) {
 		$this->id=$id;
 		$this->login=$login;
 		$this->pwd=$pwd;
@@ -136,5 +136,11 @@ function getUserByLogin ($login) {
 		die('Error!: ' . $e->getMessage() . '<br/>');
 	}
 	return $user;
+}
+
+function randomPassword( $length = 8 ) {
+	$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+;:?";
+	$password = substr( str_shuffle( $chars ), 0, $length );
+	return $password;
 }
 ?>

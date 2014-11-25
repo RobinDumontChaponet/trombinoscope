@@ -31,6 +31,7 @@ if($idAuth==0) { // user is Admin
 				if ($valid[0]) {
 					$student = new Student(-1, $_POST['name'], $_POST['firstName']);
 					createStudent($student);
+					$student->setStudentGroup(getGroupById($_POST['group']));
 				}
 			} else
 				include(CONTROLLERS_INC.'403.php');
@@ -46,7 +47,7 @@ if($idAuth==0) { // user is Admin
 					$student->setName($_POST['name']);
 					$student->setFirstName($_POST['firstName']);
 					$studentGroup->setId($_POST['group']);
-					$student->setStudentGroup ($studentGroup);
+					$student->setStudentGroup($studentGroup);
 					updateStudent($student);
 				}
 			} else
