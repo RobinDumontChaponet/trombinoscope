@@ -38,40 +38,6 @@ a[href="?requ=addgroup"]:after {
 }
 
 
-ol li .date {
-	padding-left: 2%;
-	color: rgb(181, 181, 181);
-}
-
-ol aside {
-	float:right;
-}
-
-ol aside a:before {
-	font-family:'icomoon';
-	speak:none;
-	font-style:normal;
-	font-variant:normal;
-	text-transform:none;
-	line-height:1;
-	cursor:pointer;
-}
-ol a {
-	color: #777;
-	text-decoration: none;
-	padding:0 0 0 5px;
-}
-ol aside a span {
-	display: none;
-}
-ol aside a[title="modifier"]:before {
-	content: "\e032";
-}
-ol aside a[title="supprimer"]:before {
-	content: "\e117";
-}
-
-
 .modal {
 	position: absolute;
 	z-index: 100;
