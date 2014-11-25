@@ -162,6 +162,9 @@ nav a[href="index.php?requ=groups"]:before, nav a[href="groups"]:before {
 nav a[href="index.php?requ=students"]:before, nav a[href="students"]:before {
 	content: "\e040";
 }
+nav a[href="index.php?requ=preferences"]:before, nav a[href="preferences"]:before {
+	content: "\e02b";
+}
 nav a[href="deconnection.php"]:before, nav a[href="deconnection"]:before {
 	content: "\e02c";
 }
