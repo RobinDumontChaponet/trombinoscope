@@ -5,7 +5,7 @@ class Student {
 	private $id;
 	private $name, $firstName;
 
-	public function __construct ($id='', $name, $firstName) {
+	public function __construct ($id='', $name='', $firstName='') {
 		$this->id=$id;
 		$this->name=$name;
 		$this->firstName=$firstName;
