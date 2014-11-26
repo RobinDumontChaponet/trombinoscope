@@ -4,3 +4,6 @@ form {
 li {
 	text-align: left;
 }
+label {
+	margin-right: 10px;
+}

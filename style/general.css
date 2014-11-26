@@ -213,6 +213,31 @@ ol li {
 	line-height:60px;
 	color:#777;
 	background:#fff;
+	margin:0 0 30px;
+	border:1px solid #d3d3d3;
+	border-bottom-width:0;
+	padding:0 10px;
+}
+ol li:last-child {
+	border-bottom-width:1px;
+}
+ol li .date {
+	padding-left: 2%;
+	color: rgb(181, 181, 181);
+}
+olaside {
+	float:right;
+}
+#content header aside a {
+	margin-left: 10px;
+}
+
+
+ol li {
+	font-size:16px;
+	line-height:60px;
+	color:#777;
+	background:#fff;
 	margin:0;
 	border:1px solid #d3d3d3;
 	border-bottom-width:0;
@@ -232,7 +257,7 @@ ol aside {
 	float:right;
 }
 
-ol aside a:before {
+ol aside a[title]:before {
 	font-family:'icomoon';
 	speak:none;
 	font-style:normal;

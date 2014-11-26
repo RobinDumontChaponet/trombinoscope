@@ -25,10 +25,10 @@
 	color: rgb(181, 181, 181);
 }
 
-#content header div {
+#content header aside {
 	float:right;
 }
-#content header div a {
+#content header aside a {
 	margin-left: 10px;
 }
 

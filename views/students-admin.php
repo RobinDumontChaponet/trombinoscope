@@ -1,4 +1,4 @@
-<!--meta title="Trombinoscope | Étudiants" css="style/groups.css" js="script/delete.js"-->
+<!--meta title="Trombinoscope | Étudiants" css="style/groups.css" css="style/modal.css" js="script/delete.js"-->
 <section id="content">
   <ol>
   	<li><a href="?requ=student" title="Ajouter un groupe">Ajouter un étudiant</a></li>

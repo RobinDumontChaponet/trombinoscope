@@ -4,14 +4,12 @@
 <form action="" method="post">
   <ol>
 	<li>
-	  <h1>Nom de compte : <?php echo $admin->getLogin();?></h1>
-	  <label for="pwdAdmin">Mot de passe :</label><input type="password" id="pwdAdmin" name="pwdAdmin" value="" placeholder="Password">
+	  <label for="pwdAdmin">Mot-de-passe du compte "<?php echo $admin->getLogin();?>" :</label><input type="password" id="pwdAdmin" name="pwdAdmin" value="" placeholder="Nouveau mot-de-passe">
 	</li>
 	<li>
-	  <h1>Nom de compte : <?php echo $teacher->getLogin();?></h1>
-	  <label for="pwdTeacher">Mot de passe :</label><input type="password" name="pwdTeacher" value="" placeholder="Password">
+	  <label for="pwdTeacher">Mot-de-passe du compte "<?php echo $teacher->getLogin();?>" :</label><input type="password" name="pwdTeacher" value="" placeholder="Nouveau mot-de-passe">
 	</li>
   </ol>
-  <input type="submit" value="Enregistrer" title="Enregistrer" />
+  <input type="submit" value="Enregistrer" title="Enregistrer les modifications" />
 </form>
 </section>
