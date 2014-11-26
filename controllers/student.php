@@ -31,7 +31,8 @@ if($idAuth==0) { // user is Admin
 				$student = new Student(-1, $_POST['name'], $_POST['firstName']);
 				$idStudent = createStudent($student);
 				$student->setId($idStudent);
-				$student->setStudentGroup(getGroupById($_POST['group']));
+				if(is_numeric($_POST['group']))
+					$student->setStudentGroup(getGroupById($_POST['group']));
 			}
 		}
 	} else {
