@@ -31,13 +31,14 @@ if($idAuth==0) { // user is Admin
 				$student = new Student(-1, $_POST['name'], $_POST['firstName']);
 				$idStu = createStudent($student);
 				$student->setId($idStu);
-				var_dump($student);
 				$student->setStudentGroup(getGroupById($_POST['group']));
 			}
 		}
 	} else {
 		$student = getStudentById ($_GET['id']);
 		$studentGroup = getGroupByStudent ($student);
+		if(!$studentGroup)
+			$studentGroup=new Group ('', 'Pas de groupe');
 
 		if(!empty($_POST)) {
 			$valid = validate();

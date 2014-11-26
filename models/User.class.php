@@ -123,7 +123,8 @@ function getUserById ($id) {
 }
 
 function getUserByLogin ($login) {
-	$user = null;
+	$user = null;
+
 	try {
 		$connect = connect();
 		$statement = $connect->prepare('SELECT * FROM user where login=?');
