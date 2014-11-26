@@ -29,7 +29,9 @@ if($idAuth==0) { // user is Admin
 			$valid = validate();
 			if ($valid[0]) {
 				$student = new Student(-1, $_POST['name'], $_POST['firstName']);
-				createStudent($student);
+				$idStu = createStudent($student);
+				$student->setId($idStu);
+				var_dump($student);
 				$student->setStudentGroup(getGroupById($_POST['group']));
 			}
 		}

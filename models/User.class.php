@@ -50,9 +50,9 @@ function createUser ($user) {
 	try {
 		$connect = connect();
 		$statement = $connect->prepare('INSERT INTO user (idAuth, login, pwd) values (?, ?, ?)');
-		$statement->bindParam(1, $user->auth->getId());
-		$statement->bindParam(2, $user->login);
-		$statement->bindParam(3, $user->pwd);
+		$statement->bindParam(1, $user->getAuth()->getId());
+		$statement->bindParam(2, $user->getLogin());
+		$statement->bindParam(3, $user->getPwd());
 		$statement->execute();
 
 		return $connect->lastInsertId();
@@ -123,7 +123,7 @@ function getUserById ($id) {
 }
 
 function getUserByLogin ($login) {
-	$user = null;
+	$user = null;
 	try {
 		$connect = connect();
 		$statement = $connect->prepare('SELECT * FROM user where login=?');

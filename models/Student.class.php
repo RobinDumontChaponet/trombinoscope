@@ -53,16 +53,16 @@ function createStudent ($student) {
 		$login = substr($student->getName(), 0, 4).substr($student->getFirstName(), 0, 4);
 		$user = new User(-1, $login, randomPassword(), getAuthById(1));
 		$idUser = createUser($user);
-		$user->setLogin($login.$idUser);
-		updateUser($user);
+		$student->setId($idUser);
 
 		$connect = connect();
-		$statement = $connect->prepare('INSERT INTO student (name, firstName, idGroup) values(?, ?, null)');	//Ajouter idUser avec param $user->getId();
-		$statement->bindParam(1, $student->getName());
-		$statement->bindParam(2, $student->getFirstName());
+		$statement = $connect->prepare('INSERT INTO student (idUser, name, firstName, idGroup) values(?, ?, ?, null)');	//Ajouter idUser avec param $user->getId();
+		$statement->bindParam(1, $student->getId());
+		$statement->bindParam(2, $student->getName());
+		$statement->bindParam(3, $student->getFirstName());
 		$statement->execute();
 
-		return $connect->lastInsertId();
+		return $idUser;
 	} catch (PDOException $e) {
 		die("Error create student!: " . $e->getMessage() . "<br/>");
 	}
