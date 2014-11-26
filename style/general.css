@@ -191,7 +191,7 @@ nav a[href="deconnection.php"] span, nav a[href="deconnection"] span {
 	font-weight: normal;
 }
 
-#content header a, input[type=submit] {
+#content header a, input[type=submit], .button {
 	color: #777;
 	font-weight: normal;
 	text-decoration: none;
