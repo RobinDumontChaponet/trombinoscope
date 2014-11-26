@@ -65,7 +65,7 @@ function updateUser ($user) {
 	try {
 		$connect = connect();
 		$statement = $connect->prepare('UPDATE user SET idAuth=?, login=?, pwd=? WHERE idUser=?');
-		$statement->bindParam(1, $user->auth->getId());
+		$statement->bindParam(1, $user->getAuth()->getId());
 		$statement->bindParam(2, $user->getLogin());
 		$statement->bindParam(3, $user->getPwd());
 		$statement->bindParam(4, $user->getId());
