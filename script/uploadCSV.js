@@ -14,7 +14,7 @@ FileTransfert = function (input, basename, destination, subDestination, callback
 		fd.append('sub', subDestination);
 
 		var xhr = new XMLHttpRequest();
-		xhr.open('POST', 'upload.php', true);
+		xhr.open('POST', 'upload-csv.php', true);
 
 		xhr.onload = function() {
 			if(this.readyState  == 4)

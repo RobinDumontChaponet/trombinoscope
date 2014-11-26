@@ -26,43 +26,36 @@ if($idAuth==0) { // user is Admin
 		$studentGroup = new Group();
 
 		if(!empty($_POST)) {
-			if($authId==0) { // user is Admin
-				$valid = validate();
-				if ($valid[0]) {
-					$student = new Student(-1, $_POST['name'], $_POST['firstName']);
-					createStudent($student);
-					$student->setStudentGroup(getGroupById($_POST['group']));
-				}
-			} else
-				include(CONTROLLERS_INC.'403.php');
+			$valid = validate();
+			if ($valid[0]) {
+				$student = new Student(-1, $_POST['name'], $_POST['firstName']);
+				createStudent($student);
+				$student->setStudentGroup(getGroupById($_POST['group']));
+			}
 		}
 	} else {
 		$student = getStudentById ($_GET['id']);
 		$studentGroup = getGroupByStudent ($student);
 
 		if(!empty($_POST)) {
-			if($authId==0) { // user is Admin
-				$valid = validate();
-				if ($valid[0]) {
-					$student->setName($_POST['name']);
-					$student->setFirstName($_POST['firstName']);
-					$studentGroup->setId($_POST['group']);
-					$student->setStudentGroup($studentGroup);
-					updateStudent($student);
-				}
-			} else
-				include(CONTROLLERS_INC.'403.php');
+			$valid = validate();
+			if ($valid[0]) {
+				$student->setName($_POST['name']);
+				$student->setFirstName($_POST['firstName']);
+				$studentGroup->setId($_POST['group']);
+				$student->setStudentGroup($studentGroup);
+				updateStudent($student);
+			}
 		}
 	}
 
 	include(VIEWS_INC.'student-admin.php');
 
-} elseif($_SESSION['trombiUser']->getAuth()->getId()==1) { // user is Student
+} elseif($idAuth==1) { // user is Student
 
 	include_once(MODELS_INC.'Student.class.php');
 
-	if($_SESSION['trombiUser']->getAuth()->getId()==1)
-		$student = getStudentById ($_SESSION['trombiUser']->getId());
+	$student = getStudentById ($_SESSION['trombiUser']->getId());
 
 	include(VIEWS_INC.'student.php');
 

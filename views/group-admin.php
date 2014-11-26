@@ -12,7 +12,7 @@ if($valid) {
 		echo '<p class="error">La date de début doit être supérieure à la date de fin</p>';
 	echo '<p>Modification(s) effectuée(s)</p>';
 }
-echo '<header><form action="index.php?requ=group&id='.$group->getId().'" method="post"><h1>Groupe <input type="text" name="name" value="'.$group->getName().'" placeholder="Nom du groupe"></h1><span class="date">(<input type="text" name="startDate" maxlength="4" size="4" value="'.$group->getStartDate().'" placeholder="AAAA">-<input type="text" name="endDate" maxlength="4" size="4" value="'.$group->getEndDate().'" placeholder="AAAA">)</span><aside><input type="submit" value="Enregistrer" title="Enregistrer"><a href="?requ=group&suppr='.$group->getId().'" onclick="supprModal(this); return false" title="supprimer"><span>Supprimer</span></a></aside></form></header>';
+echo '<header><form action="index.php?requ=group&id='.$group->getId().'" method="post"><h1>Groupe <input type="text" name="name" value="'.$group->getName().'" placeholder="Nom du groupe"></h1><span class="date">(<input type="text" name="startDate" maxlength="4" size="4" value="'.$group->getStartDate().'" placeholder="AAAA">-<input type="text" name="endDate" maxlength="4" size="4" value="'.$group->getEndDate().'" placeholder="AAAA">)</span><aside><input type="submit" value="Enregistrer" title="Enregistrer" /><a href="?requ=csvimport&id='.$group->getId().'" title="Importer un fichier .csv"><span>Importer .csv</span></a><a href="?requ=group&suppr='.$group->getId().'" onclick="supprModal(this); return false" title="supprimer"><span>Supprimer</span></a></aside></form></header>';
 ?>
   <figure class="add">
 	<a href="?requ=addStudent" title="Ajouter un élève">Ajouter</a>

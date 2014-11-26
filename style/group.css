@@ -27,7 +27,7 @@
 #content header aside {
 	float:right;
 }
-#content header aside a {
+#content header aside a, #content header aside input {
 	margin-left: 10px;
 }
 
