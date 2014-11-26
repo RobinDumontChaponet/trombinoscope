@@ -1,4 +1,4 @@
-<!--meta title="Trombinoscope | <?php echo (empty($_GET['id'])?'Nouveau groupe':'Groupe '.$group->getName());?>" css="style/group.css"-->
+<!--meta title="Trombinoscope | <?php echo (empty($_GET['id'])?'Nouveau groupe':'Groupe '.$group->getName());?>" css="style/group.css" css="style/modal.css" js="script/delete.js"-->
 <section id="content">
 <?php
 if($valid) {
@@ -12,7 +12,7 @@ if($valid) {
 		echo '<p class="error">La date de début doit être supérieure à la date de fin</p>';
 	echo '<p>Modification(s) effectuée(s)</p>';
 }
-echo '<header><form action="index.php?requ=group&id='.$group->getId().'" method="post"><h1>Groupe <input type="text" name="name" value="'.$group->getName().'" placeholder="Nom du groupe"></h1><span class="date">(<input type="text" name="startDate" maxlength="4" size="4" value="'.$group->getStartDate().'" placeholder="AAAA">-<input type="text" name="endDate" maxlength="4" size="4" value="'.$group->getEndDate().'" placeholder="AAAA">)</span><div><input type="submit" value="Enregistrer" title="Enregistrer"><a href="?requ=suppr&id='.$group->getId().'" onclick="suppr(this); return false" title="Supprimer"><span>Supprimer</span></a></div></form></header>';
+echo '<header><form action="index.php?requ=group&id='.$group->getId().'" method="post"><h1>Groupe <input type="text" name="name" value="'.$group->getName().'" placeholder="Nom du groupe"></h1><span class="date">(<input type="text" name="startDate" maxlength="4" size="4" value="'.$group->getStartDate().'" placeholder="AAAA">-<input type="text" name="endDate" maxlength="4" size="4" value="'.$group->getEndDate().'" placeholder="AAAA">)</span><div><input type="submit" value="Enregistrer" title="Enregistrer"><a href="?requ=group&suppr='.$group->getId().'" onclick="supprModal(this); return false" title="supprimer"><span>Supprimer</span></a></div></form></header>';
 ?>
   <figure class="add">
 	<a href="?requ=addStudent" title="Ajouter un élève">Ajouter</a>

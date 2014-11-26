@@ -28,6 +28,9 @@
 #content header div {
 	float:right;
 }
+#content header div a {
+	margin-left: 10px;
+}
 
 figure {
 	width: 200px;
