@@ -34,8 +34,12 @@ class Student {
 	public function setStudentGroup ($group) {
 		try {
 			$connect = connect();
+			$connect->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 			$statement = $connect->prepare('UPDATE student SET idGroup=? WHERE idUser=?');
-			$statement->bindParam(1, $group->getId());
+			if($group->getId())
+				$statement->bindParam(1, $group->getId());
+			else
+				$statement->bindValue(1, $null=null, PDO::PARAM_NULL);
 			$statement->bindParam(2, $this->getId());
 			$statement->execute();
 		} catch (PDOException $e) {
@@ -71,11 +75,10 @@ function createStudent ($student) {
 function updateStudent ($student) {
 	try {
 		$connect = connect();
-		$statement = $connect->prepare('UPDATE student SET name=?, firstName=?, idGroup=? WHERE idUser=?');
+		$statement = $connect->prepare('UPDATE student SET name=?, firstName=? WHERE idUser=?');
 		$statement->bindParam(1, $student->getName());
 		$statement->bindParam(2, $student->getFirstName());
-		$statement->bindParam(3, getGroupByStudent($student)->getId());
-		$statement->bindParam(4, $student->getId());
+		$statement->bindParam(3, $student->getId());
 		$statement->execute();
 	} catch (PDOException $e) {
 		die("Error update student!: " . $e->getMessage() . "<br/>");

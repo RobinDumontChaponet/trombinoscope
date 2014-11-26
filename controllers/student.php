@@ -29,16 +29,16 @@ if($idAuth==0) { // user is Admin
 			$valid = validate();
 			if ($valid[0]) {
 				$student = new Student(-1, $_POST['name'], $_POST['firstName']);
-				$idStu = createStudent($student);
-				$student->setId($idStu);
+				$idStudent = createStudent($student);
+				$student->setId($idStudent);
 				$student->setStudentGroup(getGroupById($_POST['group']));
 			}
 		}
 	} else {
-		$student = getStudentById ($_GET['id']);
-		$studentGroup = getGroupByStudent ($student);
-		if(!$studentGroup)
-			$studentGroup=new Group ('', 'Pas de groupe');
+		$student = getStudentById($_GET['id']);
+		$studentGroup = getGroupByStudent($student);
+		if($studentGroup==null)
+			$studentGroup=new Group('', 'Pas de groupe');
 
 		if(!empty($_POST)) {
 			$valid = validate();
@@ -46,8 +46,12 @@ if($idAuth==0) { // user is Admin
 				$student->setName($_POST['name']);
 				$student->setFirstName($_POST['firstName']);
 				$studentGroup->setId($_POST['group']);
-				$student->setStudentGroup($studentGroup);
+				echo '<br/><br/>';
+				var_dump($_POST['group']);
+				echo '<br/><br/>';
 				updateStudent($student);
+				if($studentGroup->getId())
+					$student->setStudentGroup($studentGroup);
 			}
 		}
 	}
