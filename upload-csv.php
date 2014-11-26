@@ -1,6 +1,7 @@
 <?php
+include_once(dirname(__FILE__).'/models/User.class.php');
 session_start();
-if (!isset($_SESSION['trombiUser']) || $_SESSION['trombiUser']=='') {
+if (!isset($_SESSION['trombiUser']) || $_SESSION['trombiUser']=='' || $_SESSION['trombiUser']->getAuth()->getId()!=0) {
 	exit();
 }
 

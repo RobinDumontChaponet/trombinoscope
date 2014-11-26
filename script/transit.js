@@ -28,7 +28,7 @@ function arrayToTable(tableData, headers) {
 function csvArrayToTable(array) {
 	var headers=Array();
 	for(var i=0, l=array[0].length; i<l; i++) {
-		headers.push('<select name="col'+i+'"><option value="" disabled selected style="display:none;">Type</option><option value="unused">(inutilisé)</option><option value="name">Nom</option><option value="firstName">Prénom</option></select>');
+		headers.push('<select name="'+i+'"><option value="" disabled selected style="display:none;">Type</option><option value="unused">(inutilisé)</option><option value="name">Nom</option><option value="firstName">Prénom</option></select>');
 	}
 	return arrayToTable(array, headers);
 }

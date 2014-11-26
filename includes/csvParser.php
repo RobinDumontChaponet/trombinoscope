@@ -1,13 +1,13 @@
 <?php
 /**
  * csv2array function.
- * 
+ *
  * @access public
  * @param mixed $src
  * @param mixed $lineNb
  * @return void
  */
-function csv2array ($src, $lineNb) {
+function csv2array ($src, $lineNb=0) {
 	$handle=fopen('data/csv/'.$src,'r');
 	$i=0;
 	$lineNb=(is_numeric($lineNb) && $lineNb>0)?$lineNb:0;
@@ -22,4 +22,4 @@ function csv2array ($src, $lineNb) {
 	fclose($handle);
 	return $array;
 }
-?> 
+?>
