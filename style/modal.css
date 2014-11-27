@@ -10,6 +10,9 @@
 	height: 28px;
 	line-height: 22px;
 }
+header .modal {
+	right: 11%;
+}
 .modal:before, .modal:after {
 	content: "";
 	position: absolute;
