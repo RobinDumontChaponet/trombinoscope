@@ -83,8 +83,6 @@ function deleteUser ($user) {
 		$statement = $connect->prepare('DELETE FROM user WHERE idUser=?');
 		$statement->bindParam(1, $user->getId());
 		$statement->execute();
-
-		return $connect->lastInsertId();
 	} catch (PDOException $e) {
 		die('Error delete user!: ' . $e->getMessage() . '<br/>');
 	}

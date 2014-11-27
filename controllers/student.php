@@ -25,6 +25,16 @@ if($idAuth==0) { // user is Admin
 		$student = new Student();
 		$studentGroup = new Group();
 
+		if(isset($_GET['suppr']) && !empty($_GET['suppr']) && $authId==0) {
+			if(isset($_GET['noconfirm'])) {
+				$student = new Student($_GET['suppr'], suppr, suppr);
+				deleteUser($student);
+				deleteStudent($student);
+				header ('Location: index.php?requ=students');
+			} else {
+				include(VIEWS_INC.'suppr.php');
+			}
+		}
 		if(!empty($_POST)) {
 			$valid = validate();
 			if ($valid[0]) {
