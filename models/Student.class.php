@@ -66,6 +66,7 @@ function createStudent ($student) {
 		$statement->bindParam(3, $student->getFirstName());
 		$statement->execute();
 
+		$student->setId($idUser);
 		return $idUser;
 	} catch (PDOException $e) {
 		die("Error create student!: " . $e->getMessage() . "<br/>");

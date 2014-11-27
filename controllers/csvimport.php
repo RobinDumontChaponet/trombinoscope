@@ -18,6 +18,10 @@ if($_SESSION['trombiUser']->getAuth()->getId()==0) { // user is Admin
 		foreach($csv as $line) {
 			//$student = new Student('', $line[$order['name']], $line[$order['firstName']]);
 			//$student->setStudentGroup($group);
+			$student = new Student(-1, $line[$order['name']], $line[$order['firstName']]);
+			createStudent($student);
+
+			$student->setStudentGroup($group);
 		}
 		header ('Location: index.php?requ=group&id='.$_GET['id']);
 
