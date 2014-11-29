@@ -1,4 +1,7 @@
 <?php
+
+echo 'id : '.$_GET['id'].'<br />';
+
 $valid=null;
 function validate () {
 	$valid = array();
