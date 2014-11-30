@@ -19,30 +19,33 @@ elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
 		include_once('includes/passwordHash.inc.php');
 
 		$user=getUserByLogin($_POST['user']);
-		var_dump($user->getAuth()->getId());
-		if ($user->getAuth()->getId() == 1) {
-			var_dump($user->getAuth()->getId());
-			if (empty($user) || $_POST['pwd'] != $user->getPwd()) {
-				$badinput=true;
-				sleep(1);
-			} else {
-				session_start();
-				$_SESSION['trombiUser']=$user;
-				session_start();
-				header ('Location: index.php');
-				exit;
+		if ($user != NULL) {
+			if ($user->getAuth()->getId() == 1) {
+				var_dump($user->getAuth()->getId());
+				if (empty($user) || $_POST['pwd'] != $user->getPwd()) {
+					$badinput=true;
+					sleep(1);
+				} else {
+					session_start();
+					$_SESSION['trombiUser']=$user;
+					session_start();
+					header ('Location: index.php');
+					exit;
+				}
+			} elseif ($user->getAuth()->getId() == 2 || $user->getAuth()->getId() == 0) {
+				if (empty($user) || !validate_password($_POST['pwd'] , $user->getPwd())) {
+					$badinput=true;
+					sleep(1);
+				} else {
+					session_start();
+					$_SESSION['trombiUser']=$user;
+					session_start();
+					header ('Location: index.php');
+					exit;
+				}
 			}
-		} elseif ($user->getAuth()->getId() == 2 || $user->getAuth()->getId() == 0) {
-			if (empty($user) || !validate_password($_POST['pwd'] , $user->getPwd())) {
-				$badinput=true;
-				sleep(1);
-			} else {
-				session_start();
-				$_SESSION['trombiUser']=$user;
-				session_start();
-				header ('Location: index.php');
-				exit;
-			}
+		} else {
+			$badinput = true;
 		}
 	}
 } ?>
