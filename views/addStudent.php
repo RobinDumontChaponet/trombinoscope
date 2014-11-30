@@ -3,19 +3,19 @@
 	<ol>
 		<form action="?requ=addStudent&idGroup=<?php echo $_GET['idGroup']?>" method="post" name="addStudent">
 		<li><input type="submit" value="Ajouter les étudiants séléctionnés"></li>
-		<li><a href="?requ=student" title="Ajouter un étudiant">Ajouter un étudiant</a></li>
+		<li><a href="?requ=student&idGroup=<?php echo $_GET['idGroup'] ?>" title="Ajouter un étudiant">Ajouter un étudiant</a></li>
 		<?php $emptyGroup = new Group ('', 'Pas de groupe');
 		if(count($students)>0)
+		$compt = 0;
 		foreach ($students as $student) {
 			$group=getGroupByStudent($student);
 			if ($group->getId() != $_GET['idGroup']) {
-				$compt = 0;
 				if(!$group) $group=$emptyGroup;
 				echo '<li>'.$student->getName().' '.$student->getFirstName().' |<a href="?requ=group&id='.$group->getId().'" title="Voir le groupe">Groupe '.$group->getName();
 				if($group->getStartDate()!='' && $group->getEndDate()!='')
 					echo '<span class="date">('.$group->getStartDate().'-'.$group->getEndDate().')</span>';
 				echo '</a><aside><input type="checkbox" name="options[]" value="'.$student->getId().'"></aside></li>';
-				$compt +=;
+				$compt = $compt +1;
 			}
 		}
 		?>
@@ -23,7 +23,6 @@
 	</ol>
     <footer>
 		<p><?php
-			$stud = count($students);
 			if($compt>1)
 				echo $compt.' étudiants dans un groupe différent';
 			else
