@@ -52,6 +52,7 @@ header .modal.suppr:after {
 	display: inline-block;
 	border: none !important;
 	border-radius: 0 !important;
+	background: #fff;
 }
 .modal.suppr a:first-child {
 	background: #F72B2B !important;

@@ -30,3 +30,15 @@ input[type=submit] {
 .button {
 	margin-left: 10px;
 }
+
+.modal {
+	position: relative !important;
+	top: 10px;
+}
+.modal:before, .modal:after {
+	left: 72% !important;
+}
+
+.modal.suppr:after {
+	border-color: rgb(240, 240, 240) transparent !important;
+}
