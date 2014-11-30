@@ -4,12 +4,12 @@
 		<form action="?requ=addStudent&idGroup=<?php echo $_GET['idGroup']?>" method="post" name="addStudent">
 		<li><input type="submit" value="Ajouter les étudiants séléctionnés"></li>
 		<li><a href="?requ=student&idGroup=<?php echo $_GET['idGroup'] ?>" title="Ajouter un étudiant">Ajouter un étudiant</a></li>
-		<?php $emptyGroup = new Group ('', 'Pas de groupe');
+		<?php $emptyGroup = new Group('', ': aucun');
 		if(count($students)>0)
 		$compt = 0;
 		foreach ($students as $student) {
 			$group=getGroupByStudent($student);
-			if ($group!=null && $group->getId()!=$_GET['idGroup']) {
+			if (($group!=null && $group->getId()!=$_GET['idGroup']) || !$group) {
 				if(!$group) $group=$emptyGroup;
 				echo '<li>'.$student->getName().' '.$student->getFirstName().' |<a href="?requ=group&id='.$group->getId().'" title="Voir le groupe">Groupe '.$group->getName();
 				if($group->getStartDate()!='' && $group->getEndDate()!='')
