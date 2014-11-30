@@ -23,7 +23,10 @@ if($idAuth==0) { // user is Admin
 
 	if(!isset($_GET['id']) || empty($_GET['id'])) {
 		$student = new Student();
-		$studentGroup = new Group();
+		if(!empty($_GET['idGroup']) && is_numeric($_GET['idGroup']))
+			$studentGroup=getGroupById($_GET['idGroup']);
+		else
+			$studentGroup = new Group();
 
 		if(isset($_GET['suppr']) && !empty($_GET['suppr']) && $authId==0) {
 			if(isset($_GET['noconfirm'])) {
@@ -44,14 +47,14 @@ if($idAuth==0) { // user is Admin
 				//$student->setId($idStudent);
 				if(is_numeric($_POST['group']))
 					$student->setStudentGroup(getGroupById($_POST['group']));
+
+				if(!empty($_GET['idGroup']))
+					header ('Location: index.php?requ=group&id='.$_GET['idGroup']);
 			}
 		}
 	} else {
 		$student = getStudentById($_GET['id']);
-		if(!empty($_GET['idGroup']) && is_numeric($_GET['idGroup']))
-			$studentGroup=getGroupById($_GET['idGroup']);
-		else
-			$studentGroup = getGroupByStudent($student);
+		$studentGroup = getGroupByStudent($student);
 		if($studentGroup==null)
 			$studentGroup=new Group('', 'Pas de groupe');
 

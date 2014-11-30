@@ -26,3 +26,7 @@ input[type=text] {
 input[type=submit] {
 	margin-top: 20px;
 }
+
+.button {
+	margin-left: 10px;
+}
