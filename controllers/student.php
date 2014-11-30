@@ -53,7 +53,7 @@ if($idAuth==0) { // user is Admin
 	} else {
 		$student = getStudentById($_GET['id']);
 
-		if(isset($_GET['remove'] && is_numeric($_GET['remove'])) {
+		if(isset($_GET['remove']) && is_numeric($_GET['remove'])) {
 			$student->setStudentGroup(new Group());
 			header ('Location: index.php?requ=group&id='.$_GET['remove']);
 		}

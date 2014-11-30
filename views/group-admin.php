@@ -21,6 +21,6 @@ echo '<header><form action="index.php?requ=group&id='.$group->getId().'" method=
 <?php
 if(count($group->getStudents())>0)
 	foreach($group->getStudents() as $student)
-		echo '<figure><img src="'.((is_file('data/images/thumbnails/student-'.$student->getId().'.jpg'))?'data/images/thumbnails/student-'.$student->getId().'.jpg':'style/images/nobody.png').'" alt="" /><figcaption><a href="index.php?requ=student&id='.$student->getId().'" title="Voir l\'étudiant">'.$student->getName().' '.$student->getFirstName().'</a><a href="?requ=student&idStud='.$student->getId().'&idGroup='.$_GET['id'].'" title="Supprimer du groupe">Supprimer du groupe</a></figcaption></figure>';
+		echo '<figure><img src="'.((is_file('data/images/thumbnails/student-'.$student->getId().'.jpg'))?'data/images/thumbnails/student-'.$student->getId().'.jpg':'style/images/nobody.png').'" alt="" /><figcaption><a href="index.php?requ=student&id='.$student->getId().'" title="Voir l\'étudiant">'.$student->getName().' '.$student->getFirstName().'</a><a href="?requ=student&id='.$student->getId().'&remove='.$_GET['id'].'" title="Supprimer du groupe">Supprimer du groupe</a></figcaption></figure>';
 ?>
 </section>
