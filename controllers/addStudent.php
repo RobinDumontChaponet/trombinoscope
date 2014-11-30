@@ -9,8 +9,18 @@ if($authId == 0) {
 
 	include(VIEWS_INC.'addStudent.php');
 
-	$options = $_GET['options'];
-	var_dump($options);
+	$options = $_POST['options'];
+	if (!empty($options)) {
+		foreach ($options as $options) {
+			$student = new Student();
+			$student->setId($options);
+			$group = new Group();
+			$group->setId($_GET['idGroup']);
+			$student->setStudentGroup($group);
+			header('Location: index.php?requ=group&id='.$_GET['idGroup']);
+		}
+	}
+
 } else
 	include(CONTROLLERS_INC.'403.php');
 

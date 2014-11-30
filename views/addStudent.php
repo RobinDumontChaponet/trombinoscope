@@ -8,11 +8,13 @@
 		if(count($students)>0)
 		foreach ($students as $student) {
 			$group=getGroupByStudent($student);
-			if(!$group) $group=$emptyGroup;
-			echo '<li>'.$student->getName().' '.$student->getFirstName().' |<a href="?requ=group&id='.$group->getId().'" title="Voir le groupe">Groupe '.$group->getName();
-			if($group->getStartDate()!='' && $group->getEndDate()!='')
-				echo '<span class="date">('.$group->getStartDate().'-'.$group->getEndDate().')</span>';
-			echo '</a><aside><input type="checkbox" name="$options[]" value="'.$student->getId().'"></aside></li>';
+			if ($group->getId() != $_GET['idGroup']) {
+				if(!$group) $group=$emptyGroup;
+				echo '<li>'.$student->getName().' '.$student->getFirstName().' |<a href="?requ=group&id='.$group->getId().'" title="Voir le groupe">Groupe '.$group->getName();
+				if($group->getStartDate()!='' && $group->getEndDate()!='')
+					echo '<span class="date">('.$group->getStartDate().'-'.$group->getEndDate().')</span>';
+				echo '</a><aside><input type="checkbox" name="options[]" value="'.$student->getId().'"></aside></li>';
+			}
 		}
 		?>
 		<li><input type="submit" value="Ajouter les étudiants séléctionnés"><form></li>
@@ -21,9 +23,9 @@
 		<p><?php
 			$stud = count($students);
 			if($stud>1)
-				echo $stud.' étudiants';
+				echo $stud.' étudiants dans un groupe différent';
 			else
-				echo $stud.' étudiant'
+				echo $stud.' étudiant dans un groupe différent'
 		?></p>
 	</footer>
 </section>
