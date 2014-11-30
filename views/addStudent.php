@@ -1,7 +1,7 @@
-<!--meta title="Trombinoscope | Ã‰tudiants" css="style/groups.css" css="style/modal.css" js="script/delete.js"-->
+<!--meta title="Trombinoscope | Selectionner des étudiants" css="style/groups.css" css="style/modal.css" js="script/delete.js"-->
 <section id="content">
 	<ol>
-		<li><a href="?requ=student" title="Ajouter un Ã©tudiant">Ajouter un Ã©tudiant</a></li>
+		<li><a href="?requ=student" title="Ajouter un groupe">Ajouter un étudiant</a></li>
 		<?php $emptyGroup = new Group ('', 'Pas de groupe');
 		if(count($students)>0)
 		foreach ($students as $student) {
@@ -18,9 +18,9 @@
 		<p><?php
 			$stud = count($students);
 			if($stud>1)
-				echo $stud.' Ã©tudiants';
+				echo $stud.' étudiants';
 			else
-				echo $stud.' Ã©tudiant'
+				echo $stud.' étudiant'
 		?></p>
 	</footer>
 </section>
