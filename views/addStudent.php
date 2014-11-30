@@ -1,7 +1,7 @@
 <!--meta title="Trombinoscope | Selectionner des étudiants" css="style/groups.css" css="style/modal.css" js="script/delete.js"-->
 <section id="content">
 	<ol>
-		<form>
+		<form action="addStudent.php" method="post" name="addStudent">
 		<li><input type="submit" value="Ajouter les étudiants séléctionnés"></li>
 		<li><a href="?requ=student" title="Ajouter un étudiant">Ajouter un étudiant</a></li>
 		<?php $emptyGroup = new Group ('', 'Pas de groupe');
