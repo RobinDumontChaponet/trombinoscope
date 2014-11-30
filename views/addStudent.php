@@ -9,11 +9,13 @@
 		foreach ($students as $student) {
 			$group=getGroupByStudent($student);
 			if ($group->getId() != $_GET['idGroup']) {
+				$compt = 0;
 				if(!$group) $group=$emptyGroup;
 				echo '<li>'.$student->getName().' '.$student->getFirstName().' |<a href="?requ=group&id='.$group->getId().'" title="Voir le groupe">Groupe '.$group->getName();
 				if($group->getStartDate()!='' && $group->getEndDate()!='')
 					echo '<span class="date">('.$group->getStartDate().'-'.$group->getEndDate().')</span>';
 				echo '</a><aside><input type="checkbox" name="options[]" value="'.$student->getId().'"></aside></li>';
+				$compt +=;
 			}
 		}
 		?>
@@ -22,10 +24,10 @@
     <footer>
 		<p><?php
 			$stud = count($students);
-			if($stud>1)
-				echo $stud.' étudiants dans un groupe différent';
+			if($compt>1)
+				echo $compt.' étudiants dans un groupe différent';
 			else
-				echo $stud.' étudiant dans un groupe différent'
+				echo $compt.' étudiant dans un groupe différent'
 		?></p>
 	</footer>
 </section>
