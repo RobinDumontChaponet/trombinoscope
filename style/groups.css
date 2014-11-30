@@ -1,7 +1,4 @@
-a[href="?requ=group"] {
-
-}
-a[href="?requ=group"]:after {
+a[href="?requ=group"]:after, a[href="?requ=student"]:after {
 	speak:none;
 	font-style:normal;
 	font-variant:normal;
