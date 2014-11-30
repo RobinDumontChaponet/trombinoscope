@@ -2,7 +2,7 @@
 <section id="content">
 	<ol>
 		<li><a href="?requ=student" title="Ajouter un étudiant">Ajouter un étudiant</a></li>
-		<?php $emptyGroup = new Group ('', 'Pas de groupe');
+		<?php $emptyGroup = new Group ('', ' : aucun');
 		if(count($students)>0)
 		foreach ($students as $student) {
 			$group=getGroupByStudent($student);
