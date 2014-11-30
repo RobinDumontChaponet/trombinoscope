@@ -57,11 +57,11 @@ elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
 <head>
 <title>Trombinoscope | Connexion</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<!--[if IE]><link rel="shortcut icon" href="style/favicon-32.ico"><![endif]-->
-<link rel="icon" href="style/favicon-96.png">
+<!--[if IE]><link rel="shortcut icon" href="style/images/favicon-32.ico"><![endif]-->
+<link rel="icon" href="style/images/favicon-96.png">
 <meta name="msapplication-TileColor" content="#FFF">
-<meta name="msapplication-TileImage" content="style/favicon-144.png">
-<link rel="apple-touch-icon" href="style/favicon-152.png">
+<meta name="msapplication-TileImage" content="style/images/favicon-144.png">
+<link rel="apple-touch-icon" href="style/images/favicon-152.png">
 <link href="style/reset.min.css" rel="stylesheet" type="text/css" />
 <link href="style/general.css" rel="stylesheet" type="text/css" />
 <link href="style/connection.css" rel="stylesheet" type="text/css" />

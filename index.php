@@ -65,11 +65,11 @@ if($matches[1]) {
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<base href="<?php echo dirname($_SERVER['PHP_SELF']).'/' ?>" />
     <title><?php echo $title; ?></title>
-    <!--[if IE]><link rel="shortcut icon" href="style/favicon-32.ico"><![endif]-->
-	<link rel="icon" href="style/favicon-96.png">
+    <!--[if IE]><link rel="shortcut icon" href="style/images/favicon-32.ico"><![endif]-->
+	<link rel="icon" href="style/images/favicon-96.png">
 	<meta name="msapplication-TileColor" content="#FFF">
-	<meta name="msapplication-TileImage" content="style/favicon-144.png">
-	<link rel="apple-touch-icon" href="style/favicon-152.png">
+	<meta name="msapplication-TileImage" content="style/images/favicon-144.png">
+	<link rel="apple-touch-icon" href="style/images/favicon-152.png">
 	<link rel="stylesheet" type="text/css" href="style/reset.min.css">
 	<link rel="stylesheet" type="text/css" href="style/general.css">
 	<?php echo $link; ?>
