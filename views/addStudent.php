@@ -9,7 +9,7 @@
 		$compt = 0;
 		foreach ($students as $student) {
 			$group=getGroupByStudent($student);
-			if ($group->getId() != $_GET['idGroup']) {
+			if ($group!=null && $group->getId()!=$_GET['idGroup']) {
 				if(!$group) $group=$emptyGroup;
 				echo '<li>'.$student->getName().' '.$student->getFirstName().' |<a href="?requ=group&id='.$group->getId().'" title="Voir le groupe">Groupe '.$group->getName();
 				if($group->getStartDate()!='' && $group->getEndDate()!='')
