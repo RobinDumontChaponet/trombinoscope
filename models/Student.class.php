@@ -1,4 +1,5 @@
 <?php
+include_once('User.class.php');
 include_once('Group.class.php');
 
 class Student {
@@ -58,9 +59,11 @@ function createStudent ($student) {
 		$user = new User(-1, $login, randomPassword(), getAuthById(1));
 		$idUser = createUser($user);
 		$student->setId($idUser);
+		$user->setLogin($user->getLogin().$user->getId());
+		updateUser($user);
 
 		$connect = connect();
-		$statement = $connect->prepare('INSERT INTO student (idUser, name, firstName, idGroup) values(?, ?, ?, null)');	//Ajouter idUser avec param $user->getId();
+		$statement = $connect->prepare('INSERT INTO student (idUser, name, firstName, idGroup) values(?, ?, ?, null)');
 		$statement->bindParam(1, $student->getId());
 		$statement->bindParam(2, $student->getName());
 		$statement->bindParam(3, $student->getFirstName());
