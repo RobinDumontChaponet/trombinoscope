@@ -48,7 +48,10 @@ if($idAuth==0) { // user is Admin
 		}
 	} else {
 		$student = getStudentById($_GET['id']);
-		$studentGroup = getGroupByStudent($student);
+		if(!empty($_GET['idGroup']) && is_numeric($_GET['idGroup']))
+			$studentGroup=getGroupById($_GET['idGroup']);
+		else
+			$studentGroup = getGroupByStudent($student);
 		if($studentGroup==null)
 			$studentGroup=new Group('', 'Pas de groupe');
 

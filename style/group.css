@@ -26,6 +26,7 @@
 
 #content header aside {
 	float:right;
+	text-align: right;
 }
 #content header aside a, #content header aside input {
 	margin-left: 10px;

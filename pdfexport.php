@@ -40,20 +40,48 @@ if ($idAuth==0 || $idAuth==2) { // user is Admin or Teacher
 
 		$mpdf->SetDisplayMode('fullpage');
 
-		//$stylesheet = file_get_contents(STYLE_PATH.'general.css');
-		//$mpdf->WriteHTML($stylesheet,1); // The parameter 1 tells that this is css/style only
-
-		$mpdf->WriteHTML('body {font-family:"Helvetica Neue","Helvetica","Myriad Set Pro","Lucida Grande","Lucida Sans Unicode","Arial","Verdana","sans-serif"; color:#777; font-weight:200; font-style:normal;font-size:100%; min-width:474px; max-width:1680px} figure {float: left}', 1);
-
-		$stylesheet = file_get_contents(STYLE_PATH.'group.css');
+		$stylesheet = file_get_contents(STYLE_PATH.'reset.min.css');
 		$mpdf->WriteHTML($stylesheet,1); // The parameter 1 tells that this is css/style only
+
+		$mpdf->WriteHTML('body {font-family:"Helvetica Neue","Helvetica","Myriad Set Pro","Lucida Grande","Lucida Sans Unicode","Arial","Verdana","sans-serif"; color:#777; font-weight:200; font-style:normal;font-size:100%; min-width:474px; max-width:1680px} figure {float: left}
+figure {
+	-webkit-flex: 1;
+	-moz-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+}
+
+figure {
+	width: 200px;
+	height: 250px;
+	display: inline-block;
+	margin: 1% 1% 28px;
+	vertical-align: middle;
+	text-align: center;
+	position: relative;
+}
+figure img {
+	width: 100%;
+	max-height: 100%;
+	border: 4px solid #fff;
+	box-shadow: 0 0 8px lightgrey;
+}
+figcaption {
+	font-size: 14px;
+	line-height: 14px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 100%;
+	margin-top: 5px;
+}', 1);
 
 		$html = '<section id="content">';
 
-		$html.= '	<header><h1>Groupe '.$group->getName().'</h1>';
+		$html.= '	<header><h1>Groupe '.$group->getName();
 		if($group->getStartDate()!='' && $group->getEndDate()!='')
 			$html.= '<span class="date">('.$group->getStartDate().'-'.$group->getEndDate().')</span>';
-		$html.= '</header>';
+		$html.= '</h1></header>';
 
 		if(count($group->getStudents())>0)
 			foreach($group->getStudents() as $student)
