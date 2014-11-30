@@ -14,7 +14,7 @@
 				echo '<li>'.$student->getName().' '.$student->getFirstName().' |<a href="?requ=group&id='.$group->getId().'" title="Voir le groupe">Groupe '.$group->getName();
 				if($group->getStartDate()!='' && $group->getEndDate()!='')
 					echo '<span class="date">('.$group->getStartDate().'-'.$group->getEndDate().')</span>';
-				echo '</a><aside><input type="checkbox" name="options[]" value="'.$student->getId().'"></aside></li>';
+				echo '</a><aside><input type="checkbox" title="Ajouter au groupe" name="options[]" value="'.$student->getId().'"></aside></li>';
 				$compt = $compt +1;
 			}
 		}
