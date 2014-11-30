@@ -12,7 +12,7 @@
 	  <option value="null"<?php echo (($studentGroup->getId()==null)?' selected':'');?>> </option>
 <?php
 foreach($groups as $group)
-	echo '		<option value="'.$group->getId().'" '.(($studentGroup->getId()==$group->getId())?' selected':'').'>'.$group->getName().'</option>';
+	echo '<option value="'.$group->getId().'" '.(($studentGroup->getId()==$group->getId())?' selected':'').'>'.$group->getName().'</option>';
 ?>
 	</select>
 	<br /><input type="submit" value="Enregistrer" />
