@@ -111,3 +111,19 @@ figcaption {
 	top: 100%;
 	margin-top: 5px;
 }
+figcaption a[title="Supprimer du groupe"]:before {
+	margin-right: 20px;
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	position: relative;
+	top: 1px;
+	content: "\e117";
+}
+figcaption a[title="Supprimer du groupe"] span {
+	display: none;
+}
