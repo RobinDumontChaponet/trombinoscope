@@ -9,8 +9,6 @@ header("HTTP/1.1 200 OK");
 if (isset($_SESSION['trombiUser']) && !empty($_SESSION['trombiUser']))
 	header ('Location: index.php');
 elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
-	$_POST['user']=preg_quote(strip_tags($_POST['user']));
-	$_POST['pwd']=preg_quote(strip_tags($_POST['pwd']));
 
 	if ($_POST['user']=='' || $_POST['pwd']=='') $badinput=true;
 	else {
@@ -21,7 +19,6 @@ elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
 		$user=getUserByLogin($_POST['user']);
 		if ($user != NULL) {
 			if ($user->getAuth()->getId() == 1) {
-				var_dump($user->getAuth()->getId());
 				if (empty($user) || $_POST['pwd'] != $user->getPwd()) {
 					$badinput=true;
 					sleep(1);
